@@ -83,25 +83,9 @@ const Navbar = () => {
                         </a>
                     ))}
 
-                    <Link
-                        to="/ai-hub"
-                        style={{
-                            color: 'var(--text-primary)',
-                            textDecoration: 'none',
-                            fontSize: '0.9rem',
-                            fontWeight: 'bold',
-                            padding: '0.5rem 1rem',
-                            borderRadius: '8px',
-                            background: 'linear-gradient(45deg, #3b82f6, #8b5cf6)',
-                            transition: 'opacity 0.3s ease'
-                        }}
-                        onMouseEnter={(e) => e.target.style.opacity = '0.9'}
-                        onMouseLeave={(e) => e.target.style.opacity = '1'}
-                    >
-                        AI Hub ✨
-                    </Link>
 
-                    <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.1)' }}></div>
+
+
                     <div style={{ display: 'flex', gap: '1rem' }}>
                         <a href="https://github.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', fontSize: '1.2rem' }}>
                             <FaGithub />
@@ -147,13 +131,7 @@ const Navbar = () => {
                             {link.name}
                         </a>
                     ))}
-                    <Link
-                        to="/ai-hub"
-                        onClick={() => setIsOpen(false)}
-                        style={{ color: '#3b82f6', textDecoration: 'none', fontSize: '1.1rem', fontWeight: 'bold' }}
-                    >
-                        AI Hub ✨
-                    </Link>
+
                 </motion.div>
             )}
         </motion.nav>

@@ -8,7 +8,7 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 
-import AIHub from './components/AIHub'
+
 
 const Portfolio = () => (
   <main>
@@ -43,7 +43,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Portfolio />} />
-          <Route path="/ai-hub" element={<AIHub />} />
+
         </Routes>
       </div>
     </Router>
