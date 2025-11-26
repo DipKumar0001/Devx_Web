@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2: Encapsulation & Interfaces</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Week 2: Encapsulation & Interfaces</h1>
+        <nav>
+            <a href="../index.html">Back to Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Modules</a>
+
+        <!-- Topic 1: Encapsulation & Access Modifiers -->
+        <div class="card">
+            <h2>1. Encapsulation & Access Modifiers</h2>
+            <p>Encapsulation is the mechanism of wrapping data (variables) and code acting on the data (methods)
+                together as a single unit.</p>
+
+            <h3>Access Modifiers</h3>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; color: #cbd5e1;">
+                <tr style="border-bottom: 1px solid #334155;">
+                    <th style="text-align: left; padding: 0.5rem;">Modifier</th>
+                    <th style="text-align: left; padding: 0.5rem;">Visibility</th>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem;"><span class="keyword">private</span></td>
+                    <td style="padding: 0.5rem;">Only within the same class.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem;">(default)</td>
+                    <td style="padding: 0.5rem;">Within the same package.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem;"><span class="keyword">protected</span></td>
+                    <td style="padding: 0.5rem;">Same package + subclasses.</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem;"><span class="keyword">public</span></td>
+                    <td style="padding: 0.5rem;">Everywhere.</td>
+                </tr>
+            </table>
+
+            <h3>Getters and Setters</h3>
+            <p>Used to protect your data. You make attributes <code>private</code> and provide <code>public</code>
+                methods to access/update them.</p>
+
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">public class</span> <span class="type">Person</span>
+                        {</span>
+                    <span class="code-line"> <span class="keyword">private</span> <span class="type">String</span> name;
+                        <span class="comment">// Hidden</span></span>
+                    <span class="code-line"></span>
+                    <span class="code-line"> <span class="comment">// Getter</span></span>
+                    <span class="code-line"> <span class="keyword">public</span> <span class="type">String</span>
+                        getName() {</span>
+                    <span class="code-line"> <span class="keyword">return</span> name;</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"> <span class="comment">// Setter</span></span>
+                    <span class="code-line"> <span class="keyword">public void</span> setName(<span
+                            class="type">String</span> newName) {</span>
+                    <span class="code-line"> <span class="keyword">if</span> (newName != <span
+                            class="keyword">null</span>) {</span>
+                    <span class="code-line"> <span class="keyword">this</span>.name = newName;</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 24px;">
+                        <strong>Private Attribute</strong>: Cannot be accessed directly (e.g., person.name = "Bob" will
+                        fail).
+                    </div>
+                    <div class="annotation-box" style="top: 120px;">
+                        <strong>Setter Logic</strong>: We can add validation here (e.g., checking for null) to protect
+                        the data integrity.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic 2: Encapsulation in Class Diagrams -->
+        <div class="card">
+            <h2>2. Encapsulation in Class Diagrams</h2>
+            <p>In UML Class Diagrams, visibility is denoted by symbols:</p>
+            <ul>
+                <li><code>+</code> : Public</li>
+                <li><code>-</code> : Private</li>
+                <li><code>#</code> : Protected</li>
+            </ul>
+            <div
+                style="background: var(--code-bg); padding: 1rem; border-radius: 8px; font-family: var(--font-code); border: 1px solid #334155;">
+                <strong>Person</strong><br>
+                ------------------<br>
+                - name: String<br>
+                - age: int<br>
+                ------------------<br>
+                + getName(): String<br>
+                + setName(n: String): void
+            </div>
+        </div>
+
+        <!-- Topic 3: Abstraction & Interfaces -->
+        <div class="card">
+            <h2>3. Abstraction - Interface</h2>
+            <p><strong>Abstraction</strong> is hiding the implementation details and showing only functionality. An
+                <strong>Interface</strong> is a pure abstract type.
+            </p>
+            <ul>
+                <li>Cannot be instantiated.</li>
+                <li>Methods are abstract by default (no body).</li>
+                <li>A class <code>implements</code> an interface.</li>
+            </ul>
+        </div>
+
+        <!-- Seminar Case Study -->
+        <div class="card">
+            <h2>Seminar - Case Study</h2>
+            <p>Designing a <strong>Remote Control System</strong> using Interfaces.</p>
+
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="comment">// a. Interface</span></span>
+                    <span class="code-line"><span class="keyword">interface</span> <span class="type">Device</span>
+                        {</span>
+                    <span class="code-line"> <span class="comment">// b. Interface Methods (Abstract)</span></span>
+                    <span class="code-line"> <span class="keyword">void</span> turnOn();</span>
+                    <span class="code-line"> <span class="keyword">void</span> turnOff();</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">TV</span> <span
+                            class="keyword">implements</span> <span class="type">Device</span> {</span>
+                    <span class="code-line"> <span class="comment">// c. Attributes / d. Properties</span></span>
+                    <span class="code-line"> <span class="keyword">private boolean</span> isOn;</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"> <span class="comment">// e. Methods (Implementation)</span></span>
+                    <span class="code-line"> <span class="keyword">public void</span> turnOn() {</span>
+                    <span class="code-line"> isOn = <span class="keyword">true</span>;</span>
+                    <span class="code-line"> System.out.println(<span class="string">"TV is On"</span>);</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line"> </span>
+                    <span class="code-line"> <span class="keyword">public void</span> turnOff() {</span>
+                    <span class="code-line"> isOn = <span class="keyword">false</span>;</span>
+                    <span class="code-line"> System.out.println(<span class="string">"TV is Off"</span>);</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 24px;">
+                        <strong>Interface</strong>: Defines the contract. Any 'Device' must be able to turn on and off.
+                    </div>
+                    <div class="annotation-box" style="top: 168px;">
+                        <strong>Implementation</strong>: The TV class provides the actual logic for these methods.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAB 2 SECTION -->
+        <div class="card" style="border-left: 4px solid var(--accent-color);">
+            <h2>Lab 2: Packages & Encapsulation</h2>
+
+            <h3>i. Understanding Packages and Sub-Packages</h3>
+            <p>Packages are used to group related classes. They help avoid name conflicts and control access.</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">package</span> com.zoo.animals;</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">public class</span> <span class="type">Lion</span> {
+                        ... }</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 0px;">
+                        <strong>Package Declaration</strong>: Must be the first line of the file.
+                    </div>
+                </div>
+            </div>
+
+            <h3>ii. Encapsulating Lion and Elephant</h3>
+            <p><strong>Task</strong>: Create classes `Lion` and `Elephant` in a package. Make their attributes private
+                (weight, age) and provide public getters/setters.</p>
+
+            <h3>iii. Using Interface to contain common methods</h3>
+            <p><strong>Task</strong>: Create an interface `AnimalBehavior` with methods `eat()` and `sleep()`. Make
+                `Lion` and `Elephant` implement it.</p>
+
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">public interface</span> <span
+                            class="type">AnimalBehavior</span> {</span>
+                    <span class="code-line"> <span class="keyword">void</span> eat();</span>
+                    <span class="code-line"> <span class="keyword">void</span> sleep();</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">public class</span> <span class="type">Lion</span>
+                        <span class="keyword">implements</span> <span class="type">AnimalBehavior</span> {</span>
+                    <span class="code-line"> <span class="keyword">public void</span> eat() {</span>
+                    <span class="code-line"> System.out.println(<span class="string">"Lion hunts and
+                            eats."</span>);</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line"> <span class="comment">// ... implement sleep()</span></span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 120px;">
+                        <strong>Polymorphism</strong>: We can now treat both Lions and Elephants as 'AnimalBehavior'
+                        types.
+                    </div>
+                </div>
+            </div>
+
+            <h3>iv. Adding new classes and methods to Packages</h3>
+            <p>Practice organizing your code. Create a `com.zoo.main` package for your `Main` class, and import the
+                animals.</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">package</span> com.zoo.main;</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">import</span> com.zoo.animals.Lion;</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">public class</span> <span class="type">Main</span>
+                        {</span>
+                    <span class="code-line"> <span class="keyword">public static void</span> main(<span
+                            class="type">String</span>[] args) {</span>
+                    <span class="code-line"> <span class="type">Lion</span> simba = <span class="keyword">new</span>
+                        <span class="type">Lion</span>();</span>
+                    <span class="code-line"> simba.eat();</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 48px;">
+                        <strong>Import</strong>: Required because Lion is in a different package.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

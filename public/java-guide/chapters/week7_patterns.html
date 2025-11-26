@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 7: Behavioral & Structural Patterns</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Week 7: Advanced Patterns</h1>
+        <nav>
+            <a href="../index.html">Back to Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Modules</a>
+
+        <!-- Topic 1: Behavioral Patterns -->
+        <div class="card">
+            <h2>1. Behavioral Design Patterns</h2>
+            <p>These patterns are concerned with algorithms and the assignment of responsibilities between objects.</p>
+
+            <h3>a. State Pattern</h3>
+            <p><strong>Goal</strong>: Allow an object to alter its behavior when its internal state changes.</p>
+            <p><strong>Example</strong>: A Vending Machine (HasMoneyState, NoMoneyState, SoldState).</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">interface</span> <span class="type">State</span>
+                        {</span>
+                    <span class="code-line"> <span class="keyword">void</span> insertCoin();</span>
+                    <span class="code-line"> <span class="keyword">void</span> pressButton();</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">NoCoinState</span>
+                        <span class="keyword">implements</span> <span class="type">State</span> {</span>
+                    <span class="code-line"> <span class="keyword">public void</span> insertCoin() {</span>
+                    <span class="code-line"> System.out.println(<span class="string">"Coin accepted"</span>);</span>
+                    <span class="code-line"> <span class="comment">// Switch to HasCoinState</span></span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line"> <span class="keyword">public void</span> pressButton() {</span>
+                    <span class="code-line"> System.out.println(<span class="string">"Insert coin first"</span>);</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 120px;">
+                        <strong>State Transition</strong>: The behavior of 'pressButton' depends entirely on the current
+                        state.
+                    </div>
+                </div>
+            </div>
+
+            <h3>b. Visitor Pattern</h3>
+            <p><strong>Goal</strong>: Separate an algorithm from an object structure on which it operates.</p>
+            <p><strong>Example</strong>: Calculating taxes for different items (Book, Food, Electronics) without
+                changing their classes.</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">interface</span> <span class="type">Visitor</span>
+                        {</span>
+                    <span class="code-line"> <span class="keyword">double</span> visit(<span class="type">Book</span>
+                        book);</span>
+                    <span class="code-line"> <span class="keyword">double</span> visit(<span
+                            class="type">Electronics</span> el);</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">TaxVisitor</span>
+                        <span class="keyword">implements</span> <span class="type">Visitor</span> {</span>
+                    <span class="code-line"> <span class="keyword">public double</span> visit(<span
+                            class="type">Book</span> book) { <span class="keyword">return</span> 0; } <span
+                            class="comment">// No tax</span></span>
+                    <span class="code-line"> <span class="keyword">public double</span> visit(<span
+                            class="type">Electronics</span> el) { <span class="keyword">return</span> el.price * 0.2;
+                        }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 144px;">
+                        <strong>Separation of Concerns</strong>: Tax logic is in 'TaxVisitor', not in 'Book' or
+                        'Electronics'.
+                    </div>
+                </div>
+            </div>
+
+            <h3>c. Observer Pattern</h3>
+            <p><strong>Goal</strong>: Define a subscription mechanism to notify multiple objects about any events that
+                happen to the object they're observing.</p>
+            <p><strong>Example</strong>: YouTube Channel (Subject) and Subscribers (Observers).</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Channel</span>
+                        {</span>
+                    <span class="code-line"> <span class="type">List</span>&lt;<span class="type">Subscriber</span>&gt;
+                        subs = <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;&gt;();</span>
+                    <span class="code-line"> </span>
+                    <span class="code-line"> <span class="keyword">void</span> upload(<span class="type">String</span>
+                        video) {</span>
+                    <span class="code-line"> <span class="keyword">for</span> (<span class="type">Subscriber</span> s :
+                        subs) s.notify(video);</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 96px;">
+                        <strong>Notification</strong>: When state changes (upload), all observers are automatically
+                        updated.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic 2: Structural Patterns -->
+        <div class="card">
+            <h2>2. Structural Design Patterns</h2>
+            <p>These patterns explain how to assemble objects and classes into larger structures.</p>
+
+            <h3>Decorator Pattern</h3>
+            <p><strong>Goal</strong>: Attach new behaviors to objects by placing these objects inside special wrapper
+                objects that contain the behaviors.</p>
+            <p><strong>Example</strong>: Coffee (Base) + Milk (Decorator) + Sugar (Decorator).</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">interface</span> <span class="type">Coffee</span> {
+                        <span class="keyword">double</span> cost(); }</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">SimpleCoffee</span>
+                        <span class="keyword">implements</span> <span class="type">Coffee</span> {</span>
+                    <span class="code-line"> <span class="keyword">public double</span> cost() { <span
+                            class="keyword">return</span> 5.0; }</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">MilkDecorator</span>
+                        <span class="keyword">implements</span> <span class="type">Coffee</span> {</span>
+                    <span class="code-line"> <span class="keyword">private</span> <span class="type">Coffee</span>
+                        coffee;</span>
+                    <span class="code-line"> <span class="keyword">public</span> <span
+                            class="type">MilkDecorator</span>(<span class="type">Coffee</span> c) { <span
+                            class="keyword">this</span>.coffee = c; }</span>
+                    <span class="code-line"> <span class="keyword">public double</span> cost() { <span
+                            class="keyword">return</span> coffee.cost() + 2.0; }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 216px;">
+                        <strong>Wrapping</strong>: MilkDecorator wraps a Coffee object and adds to its cost.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seminar -->
+        <div class="card">
+            <h2>Seminar: Identifying Patterns in Code Review</h2>
+            <p><strong>Scenario</strong>: You are reviewing a colleague's code.</p>
+            <ul>
+                <li><strong>Code</strong>: A class has a huge `if-else` block checking for "STATUS_DRAFT",
+                    "STATUS_PUBLISHED", "STATUS_ARCHIVED" to decide behavior.</li>
+                <li><strong>Review Comment</strong>: "This looks like a state machine. Consider using the <strong>State
+                        Pattern</strong> to encapsulate behavior for each status."</li>
+            </ul>
+            <hr style="border-color: #334155; margin: 1rem 0;">
+            <ul>
+                <li><strong>Code</strong>: A `Logger` class is being passed around to every single method that needs
+                    logging.</li>
+                <li><strong>Review Comment</strong>: "Since we only need one global logger, consider using the
+                    <strong>Singleton Pattern</strong> (or a dependency injection framework)."
+                </li>
+            </ul>
+            <hr style="border-color: #334155; margin: 1rem 0;">
+            <ul>
+                <li><strong>Code</strong>: We have a `TextEditor` and we want to add `Scrollbar`, `Border`, and `Shadow`
+                    features dynamically.</li>
+                <li><strong>Review Comment</strong>: "Using inheritance (e.g., `TextEditorWithBorderAndShadow`) will
+                    cause a class explosion. Use the <strong>Decorator Pattern</strong> to mix and match features."</li>
+            </ul>
+        </div>
+
+    </div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

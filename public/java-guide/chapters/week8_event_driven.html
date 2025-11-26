@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 8: Event-Driven & UML</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Week 8: Event-Driven & UML</h1>
+        <nav>
+            <a href="../index.html">Back to Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Modules</a>
+
+        <!-- Topic 1: Event-Driven Programming -->
+        <div class="card">
+            <h2>1. Event-Driven Programming</h2>
+            <p>In traditional programming, the flow is determined by the programmer (Step 1 -> Step 2). In
+                <strong>Event-Driven Programming</strong>, the flow is determined by <strong>events</strong> (User
+                clicks, Key presses, System signals).
+            </p>
+            <ul>
+                <li><strong>Event Source</strong>: The object that generates the event (e.g., a Button).</li>
+                <li><strong>Event Listener</strong>: The object that waits for the event and handles it.</li>
+                <li><strong>Event Object</strong>: Contains details about the event (e.g., which key was pressed).</li>
+            </ul>
+        </div>
+
+        <!-- Topic 2: JavaFX -->
+        <div class="card">
+            <h2>2. Event-Driven Programming using JavaFX</h2>
+            <p>JavaFX is the standard GUI library for Java. It uses a theater metaphor:</p>
+            <ul>
+                <li><strong>Stage</strong>: The main window.</li>
+                <li><strong>Scene</strong>: The content inside the window.</li>
+                <li><strong>Nodes</strong>: Elements like Buttons, Labels, TextFields.</li>
+            </ul>
+
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">import</span> javafx.application.Application;</span>
+                    <span class="code-line"><span class="keyword">import</span> javafx.scene.Scene;</span>
+                    <span class="code-line"><span class="keyword">import</span> javafx.scene.control.Button;</span>
+                    <span class="code-line"><span class="keyword">import</span> javafx.stage.Stage;</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">public class</span> <span class="type">MyApp</span>
+                        <span class="keyword">extends</span> <span class="type">Application</span> {</span>
+                    <span class="code-line"> <span class="keyword">public void</span> start(<span
+                            class="type">Stage</span> stage) {</span>
+                    <span class="code-line"> <span class="type">Button</span> btn = <span class="keyword">new</span>
+                        <span class="type">Button</span>(<span class="string">"Click Me"</span>);</span>
+                    <span class="code-line"> </span>
+                    <span class="code-line"> <span class="comment">// Handling the event</span></span>
+                    <span class="code-line"> btn.setOnAction(e -> {</span>
+                    <span class="code-line"> System.out.println(<span class="string">"Clicked!"</span>);</span>
+                    <span class="code-line"> });</span>
+                    <span class="code-line"> </span>
+                    <span class="code-line"> <span class="type">Scene</span> scene = <span class="keyword">new</span>
+                        <span class="type">Scene</span>(btn, 200, 100);</span>
+                    <span class="code-line"> stage.setScene(scene);</span>
+                    <span class="code-line"> stage.show();</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 120px;">
+                        <strong>Lambda Expression</strong>: 'e -> ...' is a concise way to define the Event Listener.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic 3: UML Diagrams -->
+        <div class="card">
+            <h2>3. UML Diagrams</h2>
+
+            <h3>a. Use Case Diagram</h3>
+            <p>Shows <strong>what</strong> the system does from a user's perspective.</p>
+            <ul>
+                <li><strong>Actor</strong>: Stick figure (User, Admin).</li>
+                <li><strong>Use Case</strong>: Oval (Login, Buy Item).</li>
+                <li><strong>System Boundary</strong>: Box around the use cases.</li>
+            </ul>
+
+            <h3>b. Activity Diagram</h3>
+            <p>Shows the <strong>flow</strong> of control (like a flowchart).</p>
+            <ul>
+                <li><strong>Start Node</strong>: Black circle.</li>
+                <li><strong>Action</strong>: Rounded rectangle.</li>
+                <li><strong>Decision</strong>: Diamond (Yes/No).</li>
+                <li><strong>End Node</strong>: Black circle with a ring.</li>
+            </ul>
+        </div>
+
+        <!-- Seminar -->
+        <div class="card">
+            <h2>Seminar: User Stories to Diagrams</h2>
+            <p><strong>User Story</strong>: "As a customer, I want to withdraw cash so that I can buy groceries."</p>
+
+            <h3>a. Use Case Diagram</h3>
+            <div
+                style="background: var(--code-bg); padding: 1rem; border-radius: 8px; font-family: var(--font-code); border: 1px solid #334155;">
+                [Customer] -- (Withdraw Cash)<br>
+                (Withdraw Cash) ..> (Check Balance) : <<include>><br>
+                    (Withdraw Cash) <.. (Print Receipt) : <<extend>>
+            </div>
+
+            <h3>b. Activity Diagram</h3>
+            <div
+                style="background: var(--code-bg); padding: 1rem; border-radius: 8px; font-family: var(--font-code); border: 1px solid #334155;">
+                (Start) -> [Insert Card] -> [Enter PIN] -> <Decision><br>
+                    If PIN OK -> [Select Amount] -> [Dispense Cash] -> (End)<br>
+                    If PIN Fail -> [Eject Card] -> (End)
+            </div>
+        </div>
+
+        <!-- LAB 8 SECTION -->
+        <div class="card" style="border-left: 4px solid var(--accent-color);">
+            <h2>Lab 8: JavaFX Implementation</h2>
+
+            <h3>Task 1: Setup</h3>
+            <p>Ensure JavaFX is configured in your IDE (IntelliJ). You may need to add the JavaFX library to your module
+                path.</p>
+
+            <h3>Task 2: Login Form</h3>
+            <p>Create a simple GUI with:</p>
+            <ul>
+                <li>Two <code>Label</code>s ("User", "Pass").</li>
+                <li>Two <code>TextField</code>s (use <code>PasswordField</code> for password).</li>
+                <li>A <code>Button</code> ("Login").</li>
+            </ul>
+
+            <h3>Task 3: Event Handling</h3>
+            <p>Add an event listener to the Login button. When clicked:</p>
+            <ol>
+                <li>Read the text from the fields.</li>
+                <li>If user="admin" and pass="1234", print "Success" to the console (or show an Alert).</li>
+                <li>Else, print "Failed".</li>
+            </ol>
+        </div>
+
+    </div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Cheat Sheet & Quick Reference</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Java Cheat Sheet & Quick Reference</h1>
+        <nav>
+            <a href="index.html">← Back to Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="hero" style="padding: 3rem 2rem;">
+            <h1>Java Cheat Sheet</h1>
+            <p>A comprehensive quick reference for Java syntax, concepts, and best practices</p>
+            <input type="text" id="search-bar" class="search-bar" placeholder="🔍 Search cheat sheet...">
+        </div>
+
+        <div class="cheatsheet-grid" id="cheatsheet-grid">
+            <!-- Getting Started Section -->
+            <div class="cheat-card" data-category="getting-started">
+                <div class="cheat-card-header">Hello World</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">public class Hello {
+    // main method
+    public static void main(String[] args) {
+        // Output: Hello, world!
+        System.out.println("Hello, world!");
+    }
+}</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                    <p class="cheat-description">Compiling and running</p>
+                    <pre><code class="code-block">$ javac Hello.java
+$ java Hello
+Hello, world!</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="getting-started">
+                <div class="cheat-card-header">Variables</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">int num = 5;
+float floatNum = 5.99f;
+char letter = 'D';
+boolean bool = true;
+String site = "quickref.me";</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="getting-started">
+                <div class="cheat-card-header">Primitive Data Types</div>
+                <div class="cheat-card-body">
+                    <table class="data-types-table">
+                        <tr>
+                            <td><code>byte</code></td>
+                            <td>8-bit signed integer</td>
+                        </tr>
+                        <tr>
+                            <td><code>short</code></td>
+                            <td>16-bit signed integer</td>
+                        </tr>
+                        <tr>
+                            <td><code>int</code></td>
+                            <td>32-bit signed integer</td>
+                        </tr>
+                        <tr>
+                            <td><code>long</code></td>
+                            <td>64-bit signed integer</td>
+                        </tr>
+                        <tr>
+                            <td><code>float</code></td>
+                            <td>32-bit floating point</td>
+                        </tr>
+                        <tr>
+                            <td><code>double</code></td>
+                            <td>64-bit floating point</td>
+                        </tr>
+                        <tr>
+                            <td><code>char</code></td>
+                            <td>16-bit Unicode character</td>
+                        </tr>
+                        <tr>
+                            <td><code>boolean</code></td>
+                            <td>true or false</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="getting-started">
+                <div class="cheat-card-header">Type Casting</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">// Widening
+// byte<short<int<long<float<double
+int i = 10;
+long l = i;  // 10
+
+// Narrowing
+double d = 10.02;
+long l = (long)d;  // 10
+
+String.valueOf(10);      // "10"
+Integer.parseInt("10");  // 10
+Double.parseDouble("10"); // 10.0</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <!-- Strings Section -->
+            <div class="cheat-card" data-category="strings">
+                <div class="cheat-card-header">Strings - Basic</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">String first = "John";
+String last = "Doe";
+String name = first + " " + last;
+System.out.println(name);
+
+String str1 = "value";
+String str2 = new String("value");
+String str3 = String.valueOf(123);</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="strings">
+                <div class="cheat-card-header">String Concatenation</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">String s = 3 + "str" + 3;     // 3str3
+String s = 3 + 3 + "str";     // 6str
+String s = "3" + 3 + "str";   // 33str
+String s = "3" + "3" + "23";  // 3323
+String s = "" + 3 + 3 + "23"; // 3323
+String s = 3 + 3 + 23;        // 29</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="strings">
+                <div class="cheat-card-header">String Comparison</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">String s1 = new String("QuickRef");
+String s2 = new String("QuickRef");
+
+s1 == s2                      // false
+s1.equals(s2)                 // true
+"AB".equalsIgnoreCase("ab")   // true</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="strings">
+                <div class="cheat-card-header">String Manipulation</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">String str = "Hello World";
+
+str.length();              // 11
+str.substring(6);          // "World"
+str.substring(0, 5);       // "Hello"
+str.toUpperCase();         // "HELLO WORLD"
+str.toLowerCase();         // "hello world"
+str.indexOf("o");          // 4
+str.replace("World", "!");  // "Hello !"
+str.trim();                // Remove whitespace
+str.split(" ");            // ["Hello", "World"]</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="strings">
+                <div class="cheat-card-header">StringBuilder</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">StringBuilder sb = new StringBuilder(10);
+
+sb.append("QuickRef");
+sb.delete(5, 9);
+sb.insert(0, "My ");
+sb.append("!");
+
+String result = sb.toString();</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                    <p class="cheat-description">StringBuilder is mutable and more efficient for string concatenation in
+                        loops.</p>
+                </div>
+            </div>
+
+            <!-- Arrays Section -->
+            <div class="cheat-card" data-category="arrays">
+                <div class="cheat-card-header">Array Declaration</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">char[] chars = new char[10];
+chars[0] = 'a';
+chars[1] = 'b';
+
+String[] letters = {"A", "B", "C"};
+int[] mylist = {100, 200};
+boolean[] answers = {true, false};</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="arrays">
+                <div class="cheat-card-header">Array Operations</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">int[] arr = {1, 2, 3, 4, 5};
+
+arr.length;                // 5
+Arrays.toString(arr);      // "[1, 2, 3, 4, 5]"
+Arrays.sort(arr);          // Sort array
+Arrays.fill(arr, 0);       // Fill with 0
+Arrays.equals(arr1, arr2); // Compare arrays</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="arrays">
+                <div class="cheat-card-header">Multidimensional Arrays</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">int[][] matrix = {
+    {1, 2, 3},
+    {4, 5, 6}
+};
+
+// Accessing elements
+int x = matrix[0][1];  // 2
+
+// Loop through 2D array
+for (int i = 0; i < matrix.length; i++) {
+    for (int j = 0; j < matrix[i].length; j++) {
+        System.out.print(matrix[i][j] + " ");
+    }
+}</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <!-- Conditionals Section -->
+            <div class="cheat-card" data-category="conditionals">
+                <div class="cheat-card-header">If-Else</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">int j = 10;
+
+if (j == 10) {
+    System.out.println("I get printed");
+} else if (j > 10) {
+    System.out.println("I don't");
+} else {
+    System.out.println("I also don't");
+}</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="conditionals">
+                <div class="cheat-card-header">Switch Statement</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">int day = 3;
+String dayType;
+
+switch (day) {
+    case 1:
+    case 7:
+        dayType = "Weekend";
+        break;
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+        dayType = "Weekday";
+        break;
+    default:
+        dayType = "Invalid";
+}</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="conditionals">
+                <div class="cheat-card-header">Ternary Operator</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">int a = 10, b = 20;
+int max = (a > b) ? a : b;
+
+// Equivalent to:
+// if (a > b) max = a;
+// else max = b;</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="conditionals">
+                <div class="cheat-card-header">Operators</div>
+                <div class="cheat-card-body">
+                    <table class="data-types-table">
+                        <tr>
+                            <td><code>==</code></td>
+                            <td>Equal to</td>
+                        </tr>
+                        <tr>
+                            <td><code>!=</code></td>
+                            <td>Not equal</td>
+                        </tr>
+                        <tr>
+                            <td><code>&gt;</code></td>
+                            <td>Greater than</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;</code></td>
+                            <td>Less than</td>
+                        </tr>
+                        <tr>
+                            <td><code>&gt;=</code></td>
+                            <td>Greater or equal</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;=</code></td>
+                            <td>Less or equal</td>
+                        </tr>
+                        <tr>
+                            <td><code>&&</code></td>
+                            <td>Logical AND</td>
+                        </tr>
+                        <tr>
+                            <td><code>||</code></td>
+                            <td>Logical OR</td>
+                        </tr>
+                        <tr>
+                            <td><code>!</code></td>
+                            <td>Logical NOT</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Loops Section -->
+            <div class="cheat-card" data-category="loops">
+                <div class="cheat-card-header">For Loop</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">for (int i = 0; i < 10; i++) {
+    System.out.print(i);
+}
+
+// Output: 0123456789</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="loops">
+                <div class="cheat-card-header">Enhanced For Loop</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">String word = "QuickRef";
+
+for (char c : word.toCharArray()) {
+    System.out.print(c + "-");
+}
+
+// Output: Q-u-i-c-k-R-e-f-</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="loops">
+                <div class="cheat-card-header">While Loop</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">int count = 0;
+
+while (count < 5) {
+    System.out.println(count);
+    count++;
+}</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="loops">
+                <div class="cheat-card-header">Do-While Loop</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">int count = 0;
+
+do {
+    System.out.println(count);
+    count++;
+} while (count < 5);</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="loops">
+                <div class="cheat-card-header">Break & Continue</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">// Break - exits loop
+for (int i = 0; i < 10; i++) {
+    if (i == 5) break;
+    System.out.print(i);
+}
+// Output: 01234
+
+// Continue - skips iteration
+for (int i = 0; i < 10; i++) {
+    if (i % 2 == 0) continue;
+    System.out.print(i);
+}
+// Output: 13579</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <!-- Collections Section -->
+            <div class="cheat-card" data-category="collections">
+                <div class="cheat-card-header">ArrayList</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+
+list.add("Java");
+list.add("Python");
+list.add("C++");
+
+list.get(0);           // "Java"
+list.set(1, "Ruby");   // Replace
+list.remove(2);        // Remove by index
+list.size();           // 2
+list.contains("Java"); // true
+list.clear();          // Remove all</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="collections">
+                <div class="cheat-card-header">HashMap</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">HashMap&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+
+map.put("Alice", 25);
+map.put("Bob", 30);
+map.put("Charlie", 35);
+
+map.get("Alice");          // 25
+map.containsKey("Bob");    // true
+map.containsValue(30);     // true
+map.remove("Charlie");
+map.size();                // 2
+
+// Iterate
+for (String key : map.keySet()) {
+    System.out.println(key + ": " + map.get(key));
+}</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="collections">
+                <div class="cheat-card-header">HashSet</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">HashSet&lt;String&gt; set = new HashSet&lt;&gt;();
+
+set.add("Apple");
+set.add("Banana");
+set.add("Apple");  // Duplicate, won't be added
+
+set.contains("Apple");  // true
+set.remove("Banana");
+set.size();             // 1
+
+// Iterate
+for (String item : set) {
+    System.out.println(item);
+}</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <!-- OOP Section -->
+            <div class="cheat-card" data-category="oop">
+                <div class="cheat-card-header">Class & Object</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">public class Car {
+    // Fields
+    private String brand;
+    private int year;
+    
+    // Constructor
+    public Car(String brand, int year) {
+        this.brand = brand;
+        this.year = year;
+    }
+    
+    // Method
+    public void drive() {
+        System.out.println("Driving " + brand);
+    }
+}
+
+// Create object
+Car myCar = new Car("Toyota", 2023);
+myCar.drive();</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="oop">
+                <div class="cheat-card-header">Inheritance</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">public class Animal {
+    protected String name;
+    
+    public void eat() {
+        System.out.println(name + " is eating");
+    }
+}
+
+public class Dog extends Animal {
+    public Dog(String name) {
+        this.name = name;
+    }
+    
+    public void bark() {
+        System.out.println(name + " says woof!");
+    }
+}
+
+Dog myDog = new Dog("Buddy");
+myDog.eat();   // Inherited method
+myDog.bark();  // Own method</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="oop">
+                <div class="cheat-card-header">Access Modifiers</div>
+                <div class="cheat-card-body">
+                    <table class="data-types-table">
+                        <tr>
+                            <td><code>public</code></td>
+                            <td>Accessible everywhere</td>
+                        </tr>
+                        <tr>
+                            <td><code>private</code></td>
+                            <td>Only within class</td>
+                        </tr>
+                        <tr>
+                            <td><code>protected</code></td>
+                            <td>Class + subclasses + package</td>
+                        </tr>
+                        <tr>
+                            <td><code>default</code></td>
+                            <td>Within package only</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="oop">
+                <div class="cheat-card-header">Abstract Class</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">abstract class Shape {
+    abstract void draw();
+    
+    void display() {
+        System.out.println("Displaying shape");
+    }
+}
+
+class Circle extends Shape {
+    void draw() {
+        System.out.println("Drawing circle");
+    }
+}
+
+Circle c = new Circle();
+c.draw();
+c.display();</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="oop">
+                <div class="cheat-card-header">Interface</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">interface Drawable {
+    void draw();
+    default void display() {
+        System.out.println("Displaying");
+    }
+}
+
+class Rectangle implements Drawable {
+    public void draw() {
+        System.out.println("Drawing rectangle");
+    }
+}
+
+Rectangle r = new Rectangle();
+r.draw();
+r.display();</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <!-- Exception Handling -->
+            <div class="cheat-card" data-category="exceptions">
+                <div class="cheat-card-header">Try-Catch-Finally</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">try {
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("Cannot divide by zero");
+} catch (Exception e) {
+    System.out.println("An error occurred");
+} finally {
+    System.out.println("Always executes");
+}</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="exceptions">
+                <div class="cheat-card-header">Throw Exception</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">public void checkAge(int age) throws Exception {
+    if (age < 18) {
+        throw new Exception("Age must be 18+");
+    }
+    System.out.println("Access granted");
+}
+
+try {
+    checkAge(15);
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+}</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <!-- Misc Section -->
+            <div class="cheat-card" data-category="misc">
+                <div class="cheat-card-header">User Input</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">Scanner in = new Scanner(System.in);
+
+String str = in.nextLine();
+System.out.println(str);
+
+int num = in.nextInt();
+System.out.println(num);
+
+in.close();</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="misc">
+                <div class="cheat-card-header">Math Methods</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">Math.max(5, 10);        // 10
+Math.min(5, 10);        // 5
+Math.abs(-4.7);         // 4.7
+Math.sqrt(64);          // 8.0
+Math.pow(2, 3);         // 8.0
+Math.round(4.7);        // 5
+Math.ceil(4.3);         // 5.0
+Math.floor(4.7);        // 4.0
+Math.random();          // Random [0.0, 1.0)</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="misc">
+                <div class="cheat-card-header">Comments</div>
+                <div class="cheat-card-body">
+                    <pre><code class="code-block">// Single line comment
+
+/* Multi-line
+   comment */
+
+/**
+ * Javadoc comment
+ * @param name The parameter
+ * @return description
+ */</code></pre>
+                    <button class="copy-code-btn">Copy</button>
+                </div>
+            </div>
+
+            <div class="cheat-card" data-category="misc">
+                <div class="cheat-card-header">Keywords</div>
+                <div class="cheat-card-body">
+                    <p class="keywords-list">
+                        <code>abstract</code> <code>assert</code> <code>boolean</code> <code>break</code>
+                        <code>byte</code> <code>case</code> <code>catch</code> <code>char</code>
+                        <code>class</code> <code>const</code> <code>continue</code> <code>default</code>
+                        <code>do</code> <code>double</code> <code>else</code> <code>enum</code>
+                        <code>extends</code> <code>final</code> <code>finally</code> <code>float</code>
+                        <code>for</code> <code>goto</code> <code>if</code> <code>implements</code>
+                        <code>import</code> <code>instanceof</code> <code>int</code> <code>interface</code>
+                        <code>long</code> <code>native</code> <code>new</code> <code>package</code>
+                        <code>private</code> <code>protected</code> <code>public</code> <code>return</code>
+                        <code>short</code> <code>static</code> <code>strictfp</code> <code>super</code>
+                        <code>switch</code> <code>synchronized</code> <code>this</code> <code>throw</code>
+                        <code>throws</code> <code>transient</code> <code>try</code> <code>void</code>
+                        <code>volatile</code> <code>while</code>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

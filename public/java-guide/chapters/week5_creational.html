@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5: Creational Design Patterns</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Week 5: Creational Design Patterns</h1>
+        <nav>
+            <a href="../index.html">Back to Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Modules</a>
+
+        <div class="card">
+            <h2>1. Understanding Design Patterns</h2>
+            <p>Design patterns are typical solutions to common problems in software design. They are like blueprints
+                that you can customize to solve a particular design problem in your code.</p>
+            <p><strong>Creational Patterns</strong> provide object creation mechanisms that increase flexibility and
+                reuse of existing code.</p>
+        </div>
+
+        <!-- Topic 2a: Singleton -->
+        <div class="card">
+            <h2>2a. Singleton Pattern</h2>
+            <p><strong>Goal</strong>: Ensure a class has only one instance and provide a global point of access to it.
+            </p>
+            <p><strong>Use Case</strong>: Database connections, Logging, Configuration settings.</p>
+
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">public class</span> <span class="type">Database</span>
+                        {</span>
+                    <span class="code-line"> <span class="comment">// 1. Static variable to hold the single
+                            instance</span></span>
+                    <span class="code-line"> <span class="keyword">private static</span> <span
+                            class="type">Database</span> instance;</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"> <span class="comment">// 2. Private constructor to prevent
+                            instantiation</span></span>
+                    <span class="code-line"> <span class="keyword">private</span> <span class="type">Database</span>()
+                        {</span>
+                    <span class="code-line"> System.out.println(<span class="string">"Connecting to
+                            SQL..."</span>);</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"> <span class="comment">// 3. Public static method to get the
+                            instance</span></span>
+                    <span class="code-line"> <span class="keyword">public static</span> <span
+                            class="type">Database</span> getInstance() {</span>
+                    <span class="code-line"> <span class="keyword">if</span> (instance == <span
+                            class="keyword">null</span>) {</span>
+                    <span class="code-line"> instance = <span class="keyword">new</span> <span
+                            class="type">Database</span>();</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line"> <span class="keyword">return</span> instance;</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 48px;">
+                        <strong>Private Constructor</strong>: Crucial! No one outside can say 'new Database()'.
+                    </div>
+                    <div class="annotation-box" style="top: 120px;">
+                        <strong>Lazy Initialization</strong>: The object is created only when 'getInstance()' is called
+                        for the first time.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic 2b: Factory Pattern -->
+        <div class="card">
+            <h2>2b. Factory Pattern</h2>
+            <p><strong>Goal</strong>: Define an interface for creating an object, but let subclasses decide which class
+                to instantiate.</p>
+            <p><strong>Use Case</strong>: A logistics app that handles different types of transport (Truck, Ship,
+                Plane).</p>
+
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">interface</span> <span class="type">Transport</span>
+                        {</span>
+                    <span class="code-line"> <span class="keyword">void</span> deliver();</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Truck</span> <span
+                            class="keyword">implements</span> <span class="type">Transport</span> {</span>
+                    <span class="code-line"> <span class="keyword">public void</span> deliver() {
+                        System.out.println(<span class="string">"By road"</span>); }</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Ship</span> <span
+                            class="keyword">implements</span> <span class="type">Transport</span> {</span>
+                    <span class="code-line"> <span class="keyword">public void</span> deliver() {
+                        System.out.println(<span class="string">"By sea"</span>); }</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">class</span> <span
+                            class="type">LogisticsFactory</span> {</span>
+                    <span class="code-line"> <span class="keyword">public</span> <span class="type">Transport</span>
+                        createTransport(<span class="type">String</span> type) {</span>
+                    <span class="code-line"> <span class="keyword">if</span> (type.equals(<span
+                            class="string">"ROAD"</span>)) <span class="keyword">return new</span> <span
+                            class="type">Truck</span>();</span>
+                    <span class="code-line"> <span class="keyword">if</span> (type.equals(<span
+                            class="string">"SEA"</span>)) <span class="keyword">return new</span> <span
+                            class="type">Ship</span>();</span>
+                    <span class="code-line"> <span class="keyword">return null</span>;</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 264px;">
+                        <strong>Factory Logic</strong>: The client doesn't need to know the complex logic of creating
+                        objects. It just asks for "ROAD" or "SEA".
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic 2c: Builder Pattern -->
+        <div class="card">
+            <h2>2c. Builder Pattern</h2>
+            <p><strong>Goal</strong>: Construct a complex object step by step.</p>
+            <p><strong>Use Case</strong>: Building a custom Pizza or a Computer with many optional configurations.</p>
+
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Pizza</span> {</span>
+                    <span class="code-line"> <span class="type">String</span> dough;</span>
+                    <span class="code-line"> <span class="type">String</span> sauce;</span>
+                    <span class="code-line"> <span class="type">String</span> topping;</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">PizzaBuilder</span>
+                        {</span>
+                    <span class="code-line"> <span class="keyword">private</span> <span class="type">Pizza</span> pizza
+                        = <span class="keyword">new</span> <span class="type">Pizza</span>();</span>
+                    <span class="code-line"> </span>
+                    <span class="code-line"> <span class="keyword">public</span> <span class="type">PizzaBuilder</span>
+                        setDough(<span class="type">String</span> d) {</span>
+                    <span class="code-line"> pizza.dough = d;</span>
+                    <span class="code-line"> <span class="keyword">return this</span>; <span class="comment">//
+                            Chaining</span></span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line"> <span class="keyword">public</span> <span class="type">PizzaBuilder</span>
+                        setSauce(<span class="type">String</span> s) {</span>
+                    <span class="code-line"> pizza.sauce = s;</span>
+                    <span class="code-line"> <span class="keyword">return this</span>;</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line"> <span class="keyword">public</span> <span class="type">Pizza</span> build()
+                        { <span class="keyword">return</span> pizza; }</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="comment">// Usage</span></span>
+                    <span class="code-line"><span class="type">Pizza</span> p = <span class="keyword">new</span> <span
+                            class="type">PizzaBuilder</span>().setDough(<span
+                            class="string">"Thin"</span>).setSauce(<span class="string">"Tomato"</span>).build();</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 192px;">
+                        <strong>Method Chaining</strong>: Returning 'this' allows us to chain calls like
+                        .set().set().build().
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seminar -->
+        <div class="card">
+            <h2>Seminar: Identifying Patterns</h2>
+
+            <h3>a. From User Stories to Patterns</h3>
+            <p><strong>Story</strong>: "As a system admin, I want to ensure only one connection to the printer exists so
+                that jobs don't get mixed up."</p>
+            <p><strong>Pattern</strong>: <span class="type">Singleton</span> (Only one instance).</p>
+            <hr style="border-color: #334155; margin: 1rem 0;">
+            <p><strong>Story</strong>: "As a user, I want to create different types of documents (PDF, Word, HTML)
+                without knowing the internal generation logic."</p>
+            <p><strong>Pattern</strong>: <span class="type">Factory</span> (Hides creation logic).</p>
+
+            <h3>b. Singleton Model (2D/3D Analogy)</h3>
+            <p>Imagine a <strong>Sun</strong> in a solar system model.</p>
+            <ul>
+                <li><strong>2D Model</strong>: A drawing on paper. You can draw multiple suns, but that's physically
+                    wrong for our solar system.</li>
+                <li><strong>3D Singleton Model</strong>: A physical model where you have ONE plastic ball representing
+                    the Sun. All planets revolve around this ONE ball. You cannot just "add another sun" to the center.
+                    The structure enforces singularity.</li>
+            </ul>
+        </div>
+
+        <!-- LAB 5 SECTION -->
+        <div class="card" style="border-left: 4px solid var(--accent-color);">
+            <h2>Lab 5: Implementing Creational Patterns</h2>
+
+            <h3>Task 1: Singleton</h3>
+            <p>Create a `ConfigurationManager` class. It should store settings (key-value pairs). Ensure only one
+                manager exists in the app.</p>
+
+            <h3>Task 2: Factory</h3>
+            <p>Create a `NotificationFactory`. It should create `EmailNotification`, `SMSNotification`, or
+                `PushNotification` objects based on user input.</p>
+
+            <h3>Task 3: Builder</h3>
+            <p>Create a `ComputerBuilder`. Allow users to build a PC with optional components: `setRAM()`, `setGPU()`,
+                `setStorage()`. Finally call `build()`.</p>
+        </div>
+
+    </div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

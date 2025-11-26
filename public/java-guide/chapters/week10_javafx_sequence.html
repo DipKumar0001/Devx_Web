@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 10: JavaFX & Sequence Diagrams</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Week 10: JavaFX Integration & Sequence Diagrams</h1>
+        <nav>
+            <a href="../index.html">Back to Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Modules</a>
+
+        <!-- Topic 1: JavaFX Integration -->
+        <div class="card">
+            <h2>1. Event-Driven Programming: Integrating Logic</h2>
+            <p>Real-world apps separate the <strong>UI</strong> (View) from the <strong>Logic</strong>
+                (Model/Controller). JavaFX allows us to trigger backend logic from frontend events.</p>
+
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="comment">// Backend Logic</span></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Calculator</span>
+                        {</span>
+                    <span class="code-line"> <span class="keyword">public int</span> add(<span
+                            class="keyword">int</span> a, <span class="keyword">int</span> b) { <span
+                            class="keyword">return</span> a + b; }</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="comment">// Frontend (JavaFX)</span></span>
+                    <span class="code-line"><span class="type">Button</span> btn = <span class="keyword">new</span>
+                        <span class="type">Button</span>(<span class="string">"Add"</span>);</span>
+                    <span class="code-line">btn.setOnAction(e -> {</span>
+                    <span class="code-line"> <span class="keyword">int</span> result = <span class="keyword">new</span>
+                        <span class="type">Calculator</span>().add(5, 10);</span>
+                    <span class="code-line"> label.setText(<span class="string">"Result: "</span> + result);</span>
+                    <span class="code-line">});</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 144px;">
+                        <strong>Integration</strong>: The UI event handler calls the 'Calculator' class. The UI doesn't
+                        know HOW to add, it just asks the backend.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic 2: Sequence Diagrams -->
+        <div class="card">
+            <h2>2. UML Sequence Diagrams</h2>
+            <p>Sequence diagrams show <strong>how</strong> objects interact with each other and in what
+                <strong>order</strong>.
+            </p>
+            <ul>
+                <li><strong>Lifeline</strong>: Dashed vertical line representing an object's life.</li>
+                <li><strong>Activation Bar</strong>: Thin rectangle on the lifeline showing when the object is active.
+                </li>
+                <li><strong>Messages</strong>: Horizontal arrows showing method calls.</li>
+            </ul>
+        </div>
+
+        <!-- Seminar -->
+        <div class="card">
+            <h2>Seminar: User Stories to Sequence Diagrams</h2>
+            <p><strong>User Story</strong>: "As a user, I want to login so I can access my dashboard."</p>
+
+            <div
+                style="background: var(--code-bg); padding: 1rem; border-radius: 8px; font-family: var(--font-code); border: 1px solid #334155;">
+                User -> LoginScreen: enterCredentials(id, pass)<br>
+                LoginScreen -> AuthService: validate(id, pass)<br>
+                AuthService -> Database: findUser(id)<br>
+                Database --> AuthService: UserData<br>
+                AuthService --> LoginScreen: true<br>
+                LoginScreen -> Dashboard: show()<br>
+            </div>
+            <p style="margin-top: 1rem; color: #94a3b8;"><strong>Explanation</strong>: The diagram proves that
+                'LoginScreen' needs to talk to 'AuthService', which talks to 'Database'. It helps plan your classes and
+                methods.</p>
+        </div>
+
+        <!-- LAB 10 SECTION -->
+        <div class="card" style="border-left: 4px solid var(--accent-color);">
+            <h2>Lab 10: Integrating Java Code with JavaFX</h2>
+
+            <h3>Task 1: The Backend</h3>
+            <p>Create a `StudentManager` class with methods:</p>
+            <ul>
+                <li><code>addStudent(String name)</code></li>
+                <li><code>getStudentCount()</code></li>
+            </ul>
+
+            <h3>Task 2: The Frontend</h3>
+            <p>Create a JavaFX window with:</p>
+            <ul>
+                <li>A TextField for the name.</li>
+                <li>A Button "Add Student".</li>
+                <li>A Label to show the count.</li>
+            </ul>
+
+            <h3>Task 3: Integration</h3>
+            <p>Inside the button's event handler:</p>
+            <ol>
+                <li>Get the name from the TextField.</li>
+                <li>Call `studentManager.addStudent(name)`.</li>
+                <li>Update the Label with `studentManager.getStudentCount()`.</li>
+            </ol>
+        </div>
+
+    </div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

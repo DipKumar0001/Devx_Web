@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1: Fundamentals of OOP</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Week 1: Fundamentals of OOP</h1>
+        <nav>
+            <a href="../index.html">Back to Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Modules</a>
+
+        <!-- Topic 1: Procedural vs OOP -->
+        <div class="card">
+            <h2>1. Procedural vs Object-Oriented Programming</h2>
+            <p><strong>Procedural Programming</strong> is about writing procedures or functions that perform operations
+                on the data.</p>
+            <p><strong>Object-Oriented Programming (OOP)</strong> is about creating objects that contain both data and
+                functions.</p>
+
+            <button class="collapsible-header">Deep Dive: Comparison Table</button>
+            <div class="collapsible-content">
+                <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; color: var(--text-color);">
+                    <tr style="border-bottom: 1px solid var(--border-color);">
+                        <th style="text-align: left; padding: 0.5rem;">Procedural</th>
+                        <th style="text-align: left; padding: 0.5rem;">Object-Oriented</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem;">Program is divided into functions.</td>
+                        <td style="padding: 0.5rem;">Program is divided into objects.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem;">Focus on functions/logic.</td>
+                        <td style="padding: 0.5rem;">Focus on data/state.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem;">Less secure (data moves freely).</td>
+                        <td style="padding: 0.5rem;">More secure (data is hidden/encapsulated).</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Topic 2: OOP using Java -->
+        <div class="card">
+            <h2>2. OOP using Java Language</h2>
+            <p>Java is a strictly Object-Oriented language (mostly). Unlike C++, where you can write procedural code, in
+                Java, <em>everything</em> must be inside a class.</p>
+            <ul>
+                <li><strong>Platform Independent</strong>: "Write Once, Run Anywhere" (WORA).</li>
+                <li><strong>Robust</strong>: Strong memory management and exception handling.</li>
+                <li><strong>Secure</strong>: No explicit pointers, runs inside a virtual machine (JVM).</li>
+            </ul>
+        </div>
+
+        <!-- Topic 3: Classes vs Objects -->
+        <div class="card">
+            <h2>3. Classes vs Objects</h2>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="comment">// The Blueprint (Class)</span></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Car</span> {</span>
+                    <span class="code-line"> <span class="type">String</span> color;</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="comment">// The Real Thing (Object)</span></span>
+                    <span class="code-line"><span class="type">Car</span> myFerrari = <span class="keyword">new</span>
+                        <span class="type">Car</span>();</span>
+                    <span class="code-line"><span class="type">Car</span> myToyota = <span class="keyword">new</span>
+                        <span class="type">Car</span>();</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 24px;">
+                        <strong>Class</strong>: Logical template. Does not consume memory for data yet.
+                    </div>
+                    <div class="annotation-box" style="top: 120px;">
+                        <strong>Object</strong>: Physical instance. Consumes memory. 'myFerrari' and 'myToyota' are
+                        separate objects from the same blueprint.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic 4: Attributes, Functions, Constructor -->
+        <div class="card">
+            <h2>4. Attributes, Functions, and Constructor</h2>
+            <ul>
+                <li><strong>Attributes (Fields)</strong>: Variables that hold the state of the object.</li>
+                <li><strong>Functions (Methods)</strong>: Code that defines the behavior of the object.</li>
+                <li><strong>Constructor</strong>: A special method used to initialize the object.</li>
+            </ul>
+
+            <!-- Interactive Quiz -->
+            <div class="quiz-container">
+                <div class="quiz-question">Quick Check: What initializes an object?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">A Method</div>
+                    <div class="quiz-option" data-correct="true">A Constructor</div>
+                    <div class="quiz-option" data-correct="false">A Variable</div>
+                </div>
+                <div class="quiz-feedback"></div>
+            </div>
+        </div>
+
+        <!-- Topic 5: User Story -->
+        <div class="card">
+            <h2>5. User Story</h2>
+            <p>In Agile development, requirements are often written as <strong>User Stories</strong>. They describe
+                <em>who</em> wants the feature, <em>what</em> they want, and <em>why</em>.
+            </p>
+
+            <div
+                style="background: rgba(157, 193, 131, 0.1); border-left: 4px solid var(--accent-color); padding: 1rem; margin: 1rem 0;">
+                <p style="margin: 0; font-family: monospace;">"As a <strong>[Role]</strong>, I want to
+                    <strong>[Action]</strong>, so that <strong>[Benefit]</strong>."
+                </p>
+            </div>
+
+            <p><strong>Example:</strong></p>
+            <p><em>"As a <strong>Library Member</strong>, I want to <strong>search for books by title</strong>, so that
+                    <strong>I can find the book I need quickly</strong>."</em></p>
+
+            <p>From this story, we can identify potential classes (Member, Book) and methods (search()).</p>
+        </div>
+
+        <!-- Topic 6: Seminar - Case Study -->
+        <div class="card">
+            <h2>6. Seminar - Case Study</h2>
+            <p>Let's design a simple <strong>Student Management System</strong> component.</p>
+
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">public class</span> <span class="type">Student</span>
+                        {</span>
+                    <span class="code-line"> <span class="comment">// d. Attributes (State)</span></span>
+                    <span class="code-line"> <span class="keyword">String</span> name;</span>
+                    <span class="code-line"> <span class="keyword">int</span> age;</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"> <span class="comment">// c. Constructor (Initialization)</span></span>
+                    <span class="code-line"> <span class="keyword">public</span> <span class="type">Student</span>(<span
+                            class="type">String</span> n, <span class="keyword">int</span> a) {</span>
+                    <span class="code-line"> <span class="keyword">this</span>.name = n;</span>
+                    <span class="code-line"> <span class="keyword">this</span>.age = a;</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"> <span class="comment">// e. Method (Behavior)</span></span>
+                    <span class="code-line"> <span class="keyword">public void</span> study() {</span>
+                    <span class="code-line"> System.out.println(name + <span class="string">" is
+                            studying."</span>);</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Main</span> {</span>
+                    <span class="code-line"> <span class="keyword">public static void</span> main(<span
+                            class="type">String</span>[] args) {</span>
+                    <span class="code-line"> <span class="comment">// b. Object (Instance)</span></span>
+                    <span class="code-line"> <span class="type">Student</span> s1 = <span class="keyword">new</span>
+                        <span class="type">Student</span>(<span class="string">"Alice"</span>, <span
+                            class="string">20</span>);</span>
+                    <span class="code-line"> s1.study();</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 0px;">
+                        <strong>a. Class</strong>: The 'Student' class defines the structure.
+                    </div>
+                    <div class="annotation-box" style="top: 48px;">
+                        <strong>d. Attributes</strong>: 'name' and 'age' store data for each student.
+                    </div>
+                    <div class="annotation-box" style="top: 120px;">
+                        <strong>c. Constructor</strong>: Sets the initial name and age when 'new Student()' is called.
+                    </div>
+                    <div class="annotation-box" style="top: 216px;">
+                        <strong>e. Method</strong>: 'study()' is an action the student can perform.
+                    </div>
+                    <div class="annotation-box" style="top: 312px;">
+                        <strong>b. Object</strong>: 's1' is a specific student named Alice.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAB 1 SECTION -->
+        <div class="card" style="border-left: 4px solid var(--accent-color);">
+            <h2>Lab 1: Environment & Basics</h2>
+
+            <h3>1. Installing IntelliJ IDEA</h3>
+            <p>IntelliJ IDEA is the most popular IDE for Java development.</p>
+            <ol>
+                <li>Download the <strong>Community Edition</strong> (Free) from the JetBrains website.</li>
+                <li>Run the installer and follow the on-screen instructions.</li>
+                <li>Open IntelliJ and create a "New Project". Select "Java" as the language.</li>
+            </ol>
+
+            <h3>2. Hello World in Java</h3>
+            <p>Every Java journey starts here.</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">public class</span> <span class="type">Main</span>
+                        {</span>
+                    <span class="code-line"> <span class="keyword">public static void</span> main(<span
+                            class="type">String</span>[] args) {</span>
+                    <span class="code-line"> System.out.println(<span class="string">"Hello, World!"</span>);</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 24px;">
+                        <strong>main method</strong>: The entry point of any Java application.
+                    </div>
+                    <div class="annotation-box" style="top: 48px;">
+                        <strong>System.out.println</strong>: Prints text to the console.
+                    </div>
+                </div>
+            </div>
+
+            <h3>3. Data Types, Functions, Comments, Control Flow</h3>
+            <p>The building blocks of Java syntax.</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="comment">// This is a single-line comment</span></span>
+                    <span class="code-line"><span class="keyword">int</span> count = <span
+                            class="string">5</span>;</span>
+                    <span class="code-line"><span class="keyword">boolean</span> isActive = <span
+                            class="keyword">true</span>;</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">if</span> (isActive) {</span>
+                    <span class="code-line"> <span class="keyword">for</span> (<span class="keyword">int</span> i =
+                        <span class="string">0</span>; i < count; i++) {</span>
+                            <span class="code-line"> printNumber(i);</span>
+                            <span class="code-line"> }</span>
+                            <span class="code-line">}</span>
+                            <span class="code-line"></span>
+                            <span class="code-line"><span class="comment">// Function (Method)</span></span>
+                            <span class="code-line"><span class="keyword">void</span> printNumber(<span
+                                    class="keyword">int</span> n) {</span>
+                            <span class="code-line"> System.out.println(n);</span>
+                            <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 24px;">
+                        <strong>Data Types</strong>: 'int' for numbers, 'boolean' for true/false.
+                    </div>
+                    <div class="annotation-box" style="top: 72px;">
+                        <strong>Control Flow</strong>: 'if' checks a condition, 'for' loops multiple times.
+                    </div>
+                    <div class="annotation-box" style="top: 168px;">
+                        <strong>Function</strong>: A reusable block of code.
+                    </div>
+                </div>
+            </div>
+
+            <h3>4. Lab Exercise: Classes & Objects</h3>
+            <p><strong>Task</strong>: Create a `Book` class with attributes `title` and `author`. Create a constructor
+                and a method to display info.</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Book</span> {</span>
+                    <span class="code-line"> <span class="type">String</span> title;</span>
+                    <span class="code-line"> <span class="type">String</span> author;</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"> <span class="keyword">public</span> <span class="type">Book</span>(<span
+                            class="type">String</span> t, <span class="type">String</span> a) {</span>
+                    <span class="code-line"> <span class="keyword">this</span>.title = t;</span>
+                    <span class="code-line"> <span class="keyword">this</span>.author = a;</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"> <span class="keyword">public void</span> display() {</span>
+                    <span class="code-line"> System.out.println(title + <span class="string">" by "</span> +
+                        author);</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 96px;">
+                        <strong>Constructor</strong>: Initializes the book's title and author.
+                    </div>
+                    <div class="annotation-box" style="top: 144px;">
+                        <strong>Method</strong>: Displays the book's details.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

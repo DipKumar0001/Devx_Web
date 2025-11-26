@@ -83,6 +83,24 @@ const Navbar = () => {
                         </a>
                     ))}
 
+                    <a
+                        href="/java-guide/index.html"
+                        style={{
+                            color: 'var(--text-primary)',
+                            textDecoration: 'none',
+                            fontSize: '0.9rem',
+                            fontWeight: 'bold',
+                            padding: '0.5rem 1rem',
+                            borderRadius: '8px',
+                            background: 'linear-gradient(45deg, #f59e0b, #ea580c)',
+                            transition: 'opacity 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => e.target.style.opacity = '0.9'}
+                        onMouseLeave={(e) => e.target.style.opacity = '1'}
+                    >
+                        Java Guide ☕
+                    </a>
+
 
 
 
@@ -131,6 +149,13 @@ const Navbar = () => {
                             {link.name}
                         </a>
                     ))}
+                    <a
+                        href="/java-guide/index.html"
+                        onClick={() => setIsOpen(false)}
+                        style={{ color: '#f59e0b', textDecoration: 'none', fontSize: '1.1rem', fontWeight: 'bold' }}
+                    >
+                        Java Guide ☕
+                    </a>
 
                 </motion.div>
             )}

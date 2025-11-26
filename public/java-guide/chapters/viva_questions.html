@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viva Questions & Answers</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .qa-card {
+            border-left: 4px solid var(--accent-color);
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .answer {
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Viva Questions & Answers</h1>
+        <nav>
+            <a href="../index.html">Back to Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Modules</a>
+
+        <div class="card">
+            <h2>Module 1: Fundamentals</h2>
+            <div class="qa-card">
+                <div class="question">Q: What is the main difference between Procedural and OOP?</div>
+                <div class="answer">A: Procedural programming focuses on functions and logic, while OOP focuses on
+                    objects that bundle data and behavior together.</div>
+            </div>
+            <div class="qa-card">
+                <div class="question">Q: What is a Constructor?</div>
+                <div class="answer">A: A special method used to initialize objects. It is called when an object of a
+                    class is created.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Module 2: Encapsulation & Interfaces</h2>
+            <div class="qa-card">
+                <div class="question">Q: Why do we use Encapsulation?</div>
+                <div class="answer">A: To hide the internal state of an object and require all interaction to be
+                    performed through an object's methods (data hiding).</div>
+            </div>
+            <div class="qa-card">
+                <div class="question">Q: Can an interface have fields?</div>
+                <div class="answer">A: Yes, but they are implicitly public, static, and final (constants).</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Module 3: Polymorphism</h2>
+            <div class="qa-card">
+                <div class="question">Q: What is the difference between Overloading and Overriding?</div>
+                <div class="answer">A: Overloading occurs within the same class (same name, different params).
+                    Overriding occurs between parent and child classes (same name, same params).</div>
+            </div>
+            <div class="qa-card">
+                <div class="question">Q: Can you override a static method?</div>
+                <div class="answer">A: No, static methods are bound to the class, not the instance. They can be hidden,
+                    but not overridden.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Module 4: Relationships</h2>
+            <div class="qa-card">
+                <div class="question">Q: Difference between Aggregation and Composition?</div>
+                <div class="answer">A: Aggregation is a weak association (child can exist independently). Composition is
+                    a strong association (child cannot exist without parent).</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Module 5-7: Design Patterns</h2>
+            <div class="qa-card">
+                <div class="question">Q: When would you use the Singleton pattern?</div>
+                <div class="answer">A: When you need exactly one instance of a class, accessible globally (e.g.,
+                    Database connection, Logger).</div>
+            </div>
+            <div class="qa-card">
+                <div class="question">Q: What is the Factory pattern?</div>
+                <div class="answer">A: A creational pattern that provides an interface for creating objects in a
+                    superclass, but allows subclasses to alter the type of objects that will be created.</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Module 8-10: JavaFX & UML</h2>
+            <div class="qa-card">
+                <div class="question">Q: What is the Stage in JavaFX?</div>
+                <div class="answer">A: The Stage is the top-level container (the window) of a JavaFX application.</div>
+            </div>
+            <div class="qa-card">
+                <div class="question">Q: What does a Sequence Diagram show?</div>
+                <div class="answer">A: It shows object interactions arranged in time sequence.</div>
+            </div>
+        </div>
+    </div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

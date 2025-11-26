@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4: Relationships</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Week 4: Object Relationships</h1>
+        <nav>
+            <a href="../index.html">Back to Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Modules</a>
+
+        <!-- Topic 1: Inheritance/Interfaces -->
+        <div class="card">
+            <h2>1. Inheritance / Interfaces ("Is-A")</h2>
+            <p>This is the strongest relationship. It represents a parent-child relationship.</p>
+            <ul>
+                <li><strong>Inheritance</strong>: <code>Car extends Vehicle</code> -> Car <strong>IS A</strong> Vehicle.
+                </li>
+                <li><strong>Interface</strong>: <code>Dog implements Animal</code> -> Dog <strong>IS AN</strong> Animal.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Topic 2: Dependency -->
+        <div class="card">
+            <h2>2. Dependency ("Uses-A")</h2>
+            <p>A temporary relationship where one object uses another. Usually passed as a method parameter.</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Printer</span>
+                        {</span>
+                    <span class="code-line"> <span class="keyword">void</span> print(<span class="type">Document</span>
+                        doc) {</span>
+                    <span class="code-line"> System.out.println(doc.getText());</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 24px;">
+                        <strong>Dependency</strong>: Printer 'uses' Document. It doesn't own it. If Printer dies,
+                        Document survives.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic 3: Association -->
+        <div class="card">
+            <h2>3. Association ("Has-A")</h2>
+            <p>A relationship where objects are linked. It comes in two flavors:</p>
+
+            <h3>a. Aggregation (Weak "Has-A")</h3>
+            <p>The child can exist independently of the parent.</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Department</span>
+                        {</span>
+                    <span class="code-line"> <span class="type">List</span>&lt;<span class="type">Professor</span>&gt;
+                        staff;</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 24px;">
+                        <strong>Aggregation</strong>: Professors exist even if the Department closes.
+                    </div>
+                </div>
+            </div>
+
+            <h3>b. Composition (Strong "Has-A")</h3>
+            <p>The child CANNOT exist without the parent. They live and die together.</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">House</span> {</span>
+                    <span class="code-line"> <span class="keyword">private</span> <span class="type">Room</span> room =
+                        <span class="keyword">new</span> <span class="type">Room</span>();</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 24px;">
+                        <strong>Composition</strong>: If you destroy the House, the Room is destroyed too.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seminar: Identifying OOP Components -->
+        <div class="card">
+            <h2>Seminar: Identifying OOP Components</h2>
+            <p>Let's analyze a snippet of code and identify all the OOP concepts.</p>
+
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="comment">// l. Main Class</span></span>
+                    <span class="code-line"><span class="keyword">public class</span> <span class="type">ZooApp</span>
+                        {</span>
+                    <span class="code-line"> <span class="keyword">public static void</span> main(<span
+                            class="type">String</span>[] args) {</span>
+                    <span class="code-line"> <span class="comment">// c. Object</span></span>
+                    <span class="code-line"> <span class="type">Animal</span> leo = <span class="keyword">new</span>
+                        <span class="type">Lion</span>();</span>
+                    <span class="code-line"> leo.eat(); <span class="comment">// k. Polymorphism</span></span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="comment">// h. Abstraction</span></span>
+                    <span class="code-line"><span class="keyword">abstract class</span> <span class="type">Animal</span>
+                        {</span>
+                    <span class="code-line"> <span class="comment">// g. Encapsulation (private attribute)</span></span>
+                    <span class="code-line"> <span class="keyword">private</span> <span class="type">String</span>
+                        name;</span>
+                    <span class="code-line"> </span>
+                    <span class="code-line"> <span class="comment">// f. Constructor</span></span>
+                    <span class="code-line"> <span class="keyword">public</span> <span class="type">Animal</span>(<span
+                            class="type">String</span> n) { <span class="keyword">this</span>.name = n; }</span>
+                    <span class="code-line"> </span>
+                    <span class="code-line"> <span class="comment">// e. Method</span></span>
+                    <span class="code-line"> <span class="keyword">public abstract void</span> eat();</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="comment">// i. Inheritance (j. Inheritance - repeated for
+                            emphasis)</span></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Lion</span> <span
+                            class="keyword">extends</span> <span class="type">Animal</span> {</span>
+                    <span class="code-line"> <span class="keyword">public</span> <span class="type">Lion</span>() {
+                        <span class="keyword">super</span>(<span class="string">"Leo"</span>); }</span>
+                    <span class="code-line"> <span class="keyword">public void</span> eat() { System.out.println(<span
+                            class="string">"Meat"</span>); }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 24px;">
+                        <strong>l. Main Class</strong>: Entry point.
+                    </div>
+                    <div class="annotation-box" style="top: 72px;">
+                        <strong>c. Object</strong>: 'leo' is an instance.
+                    </div>
+                    <div class="annotation-box" style="top: 96px;">
+                        <strong>k. Polymorphism</strong>: Calling eat() on Animal type, but Lion's method runs.
+                    </div>
+                    <div class="annotation-box" style="top: 192px;">
+                        <strong>g. Encapsulation</strong>: 'name' is private.
+                    </div>
+                    <div class="annotation-box" style="top: 312px;">
+                        <strong>i. Inheritance</strong>: Lion extends Animal.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAB 4 SECTION -->
+        <div class="card" style="border-left: 4px solid var(--accent-color);">
+            <h2>Lab 4: Relationships & Collections</h2>
+
+            <h3>a. Implementing Relationships</h3>
+            <p><strong>Task</strong>: Create a `Zoo` class (Aggregation) that has a list of `Animal`s. Create a `Keeper`
+                class (Association) that feeds the animals.</p>
+
+            <h3>b. Using Java List of Objects</h3>
+            <p>Arrays are fixed size. Lists grow dynamically.</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">import</span> java.util.ArrayList;</span>
+                    <span class="code-line"><span class="keyword">import</span> java.util.List;</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="type">List</span>&lt;<span class="type">Animal</span>&gt;
+                        animals = <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;&gt;();</span>
+                    <span class="code-line">animals.add(<span class="keyword">new</span> <span
+                            class="type">Lion</span>());</span>
+                    <span class="code-line">animals.add(<span class="keyword">new</span> <span
+                            class="type">Elephant</span>());</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 72px;">
+                        <strong>Generics</strong>: &lt;Animal&gt; ensures only Animals can be added to this list.
+                    </div>
+                </div>
+            </div>
+
+            <h3>c. Extending Previous Lab</h3>
+            <p><strong>Task</strong>: Update your Zoo project.</p>
+            <ol>
+                <li>Add a `Zoo` class that holds the `List<Animal>`.</li>
+                <li>Add a method `addAnimal(Animal a)` to the Zoo.</li>
+                <li>Add a method `feedAnimals()` that iterates through the list and calls `eat()` on each animal.</li>
+            </ol>
+        </div>
+
+    </div>
+    <script src="../script.js"></script>
+</body>
+
+</html>

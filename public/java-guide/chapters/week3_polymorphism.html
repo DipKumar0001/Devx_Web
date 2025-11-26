@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3: Polymorphism</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Week 3: Polymorphism</h1>
+        <nav>
+            <a href="../index.html">Back to Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Modules</a>
+
+        <!-- Topic 1: Inheritance -->
+        <div class="card">
+            <h2>1. Inheritance</h2>
+            <p>Inheritance is a mechanism where a new class acquires the properties and behaviors of an existing class.
+            </p>
+            <ul>
+                <li><strong>Parent Class (Super Class)</strong>: The class being inherited from.</li>
+                <li><strong>Child Class (Sub Class)</strong>: The class that inherits from the parent.</li>
+            </ul>
+
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="comment">// a. Parent Class</span></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Vehicle</span>
+                        {</span>
+                    <span class="code-line"> <span class="keyword">protected</span> <span class="type">String</span>
+                        brand = <span class="string">"Ford"</span>;</span>
+                    <span class="code-line"> <span class="keyword">public void</span> honk() {</span>
+                    <span class="code-line"> System.out.println(<span class="string">"Tuut, tuut!"</span>);</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="comment">// b. Child Class</span></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Car</span> <span
+                            class="keyword">extends</span> <span class="type">Vehicle</span> {</span>
+                    <span class="code-line"> <span class="keyword">private</span> <span class="type">String</span>
+                        modelName = <span class="string">"Mustang"</span>;</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 0px;">
+                        <strong>Parent</strong>: Defines common attributes like 'brand'.
+                    </div>
+                    <div class="annotation-box" style="top: 168px;">
+                        <strong>Child</strong>: 'Car' IS-A 'Vehicle'. It gets 'brand' and 'honk' for free.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic 2: Polymorphism -->
+        <div class="card">
+            <h2>2. Polymorphism</h2>
+            <p>Polymorphism means "many forms". It allows us to perform a single action in different ways.</p>
+
+            <h3>a. Method Overloading (Compile-time)</h3>
+            <p>Same method name, different parameters (number or type) within the same class.</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Calculator</span>
+                        {</span>
+                    <span class="code-line"> <span class="keyword">int</span> add(<span class="keyword">int</span> a,
+                        <span class="keyword">int</span> b) { <span class="keyword">return</span> a + b; }</span>
+                    <span class="code-line"> <span class="keyword">double</span> add(<span class="keyword">double</span>
+                        a, <span class="keyword">double</span> b) { <span class="keyword">return</span> a + b; }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 24px;">
+                        <strong>Overloading</strong>: The compiler decides which 'add' to call based on the arguments.
+                    </div>
+                </div>
+            </div>
+
+            <h3>b. Method Overriding (Runtime)</h3>
+            <p>Child class provides a specific implementation of a method that is already provided by its parent class.
+            </p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Animal</span> {</span>
+                    <span class="code-line"> <span class="keyword">void</span> sound() { System.out.println(<span
+                            class="string">"..."</span>); }</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Dog</span> <span
+                            class="keyword">extends</span> <span class="type">Animal</span> {</span>
+                    <span class="code-line"> <span class="keyword">@Override</span></span>
+                    <span class="code-line"> <span class="keyword">void</span> sound() { System.out.println(<span
+                            class="string">"Bark"</span>); }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 120px;">
+                        <strong>Overriding</strong>: The 'Dog' replaces the generic sound with "Bark".
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topic 3: Abstraction -->
+        <div class="card">
+            <h2>3. Abstraction</h2>
+            <p>Hiding implementation details and showing only functionality.</p>
+
+            <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; color: #cbd5e1;">
+                <tr style="border-bottom: 1px solid #334155;">
+                    <th style="text-align: left; padding: 0.5rem;">Abstract Class</th>
+                    <th style="text-align: left; padding: 0.5rem;">Interface</th>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem;">Can have abstract and non-abstract methods.</td>
+                    <td style="padding: 0.5rem;">All methods are abstract (until Java 8).</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem;">Can have instance variables.</td>
+                    <td style="padding: 0.5rem;">Only static final variables (constants).</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.5rem;">"is-a" relationship.</td>
+                    <td style="padding: 0.5rem;">"can-do" relationship.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Seminar Case Study -->
+        <div class="card">
+            <h2>Seminar - Case Study</h2>
+            <p><strong>Shape System</strong>: Demonstrating Abstract Classes and Polymorphism.</p>
+
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="comment">// a. Abstract Class / c. Parent Class</span></span>
+                    <span class="code-line"><span class="keyword">abstract class</span> <span class="type">Shape</span>
+                        {</span>
+                    <span class="code-line"> <span class="type">String</span> color;</span>
+                    <span class="code-line"> </span>
+                    <span class="code-line"> <span class="comment">// b. Abstract Method</span></span>
+                    <span class="code-line"> <span class="keyword">abstract double</span> getArea();</span>
+                    <span class="code-line"> </span>
+                    <span class="code-line"> <span class="comment">// Concrete method</span></span>
+                    <span class="code-line"> <span class="keyword">void</span> setColor(<span class="type">String</span>
+                        c) { <span class="keyword">this</span>.color = c; }</span>
+                    <span class="code-line">}</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="comment">// d. Child Class</span></span>
+                    <span class="code-line"><span class="keyword">class</span> <span class="type">Circle</span> <span
+                            class="keyword">extends</span> <span class="type">Shape</span> {</span>
+                    <span class="code-line"> <span class="keyword">double</span> radius;</span>
+                    <span class="code-line"> </span>
+                    <span class="code-line"> <span class="comment">// f. Method Overriding</span></span>
+                    <span class="code-line"> <span class="keyword">@Override</span></span>
+                    <span class="code-line"> <span class="keyword">double</span> getArea() {</span>
+                    <span class="code-line"> <span class="keyword">return</span> <span class="string">3.14</span> *
+                        radius * radius;</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line"> </span>
+                    <span class="code-line"> <span class="comment">// e. Method Overloading (Custom
+                            resize)</span></span>
+                    <span class="code-line"> <span class="keyword">void</span> resize(<span class="keyword">int</span>
+                        factor) { radius *= factor; }</span>
+                    <span class="code-line"> <span class="keyword">void</span> resize(<span
+                            class="keyword">double</span> factor) { radius *= factor; }</span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 24px;">
+                        <strong>Abstract Class</strong>: Cannot be instantiated. 'Shape s = new Shape()' is illegal.
+                    </div>
+                    <div class="annotation-box" style="top: 96px;">
+                        <strong>Abstract Method</strong>: Forces the child class to provide the logic for 'getArea'.
+                    </div>
+                    <div class="annotation-box" style="top: 264px;">
+                        <strong>Implementation</strong>: Circle MUST implement 'getArea' to be a valid concrete class.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAB 3 SECTION -->
+        <div class="card" style="border-left: 4px solid var(--accent-color);">
+            <h2>Lab 3: Abstract Classes & Polymorphism</h2>
+
+            <h3>i. Using Abstract Class as Parent</h3>
+            <p><strong>Task</strong>: Extend your Zoo project. Create an abstract class `Animal` that implements
+                `AnimalBehavior` (from Lab 2) but leaves `eat()` abstract.</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="keyword">public abstract class</span> <span
+                            class="type">Animal</span> <span class="keyword">implements</span> <span
+                            class="type">AnimalBehavior</span> {</span>
+                    <span class="code-line"> <span class="keyword">protected</span> <span class="type">String</span>
+                        name;</span>
+                    <span class="code-line"> <span class="keyword">public abstract void</span> eat(); <span
+                            class="comment">// Still abstract</span></span>
+                    <span class="code-line"> </span>
+                    <span class="code-line"> <span class="keyword">public void</span> sleep() {</span>
+                    <span class="code-line"> System.out.println(<span class="string">"Zzz..."</span>);</span>
+                    <span class="code-line"> }</span>
+                    <span class="code-line">}</span>
+                </div>
+            </div>
+
+            <h3>ii. Creating Child Classes</h3>
+            <p><strong>Task</strong>: Refactor `Lion` and `Elephant` to extend `Animal`. They must implement `eat()`.
+            </p>
+
+            <h3>iii. Polymorphism in Child Classes</h3>
+            <p><strong>Task</strong>: Create a list of Animals and iterate through them.</p>
+            <div class="visual-code-container">
+                <div class="code-pane">
+                    <span class="code-line"><span class="type">List</span>&lt;<span class="type">Animal</span>&gt; zoo =
+                        <span class="keyword">new</span> <span class="type">ArrayList</span>&lt;&gt;();</span>
+                    <span class="code-line">zoo.add(<span class="keyword">new</span> <span
+                            class="type">Lion</span>());</span>
+                    <span class="code-line">zoo.add(<span class="keyword">new</span> <span
+                            class="type">Elephant</span>());</span>
+                    <span class="code-line"></span>
+                    <span class="code-line"><span class="keyword">for</span> (<span class="type">Animal</span> a : zoo)
+                        {</span>
+                    <span class="code-line"> a.eat(); <span class="comment">// Polymorphism in action!</span></span>
+                    <span class="code-line">}</span>
+                </div>
+                <div class="annotations-pane">
+                    <div class="annotation-box" style="top: 96px;">
+                        <strong>Polymorphism</strong>: We don't know if 'a' is a Lion or Elephant, but we know it can
+                        'eat'. The correct method is called at runtime.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="../script.js"></script>
+</body>
+
+</html>
