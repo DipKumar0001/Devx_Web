@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Lenis from 'lenis'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -7,6 +8,17 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import CustomCursor from './components/CustomCursor'
+import AIHub from './components/AIHub'
+
+const Portfolio = () => (
+  <main>
+    <Hero />
+    <About />
+    <Skills />
+    <Projects />
+    <Contact />
+  </main>
+)
 
 function App() {
   useEffect(() => {
@@ -25,17 +37,16 @@ function App() {
   }, [])
 
   return (
-    <div className="app">
-      <CustomCursor />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-    </div>
+    <Router>
+      <div className="app">
+        <CustomCursor />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Portfolio />} />
+          <Route path="/ai-hub" element={<AIHub />} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 

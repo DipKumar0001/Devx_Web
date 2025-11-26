@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -20,6 +23,21 @@ const Navbar = () => {
         { name: 'Projects', href: '#projects' },
         { name: 'Contact', href: '#contact' },
     ];
+
+    const handleNavClick = (e, href) => {
+        e.preventDefault();
+        if (location.pathname !== '/') {
+            navigate('/');
+            setTimeout(() => {
+                const element = document.querySelector(href);
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        } else {
+            const element = document.querySelector(href);
+            if (element) element.scrollIntoView({ behavior: 'smooth' });
+        }
+        setIsOpen(false);
+    };
 
     return (
         <motion.nav
@@ -40,9 +58,9 @@ const Navbar = () => {
             }}
         >
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <a href="#" style={{ fontSize: '1.5rem', fontWeight: 'bold', textDecoration: 'none', color: 'var(--text-primary)' }}>
+                <Link to="/" style={{ fontSize: '1.5rem', fontWeight: 'bold', textDecoration: 'none', color: 'var(--text-primary)' }}>
                     Dev<span style={{ color: 'var(--accent-cyan)' }}>Portfolio</span>
-                </a>
+                </Link>
 
                 {/* Desktop Menu */}
                 <div className="desktop-menu" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
@@ -50,11 +68,13 @@ const Navbar = () => {
                         <a
                             key={link.name}
                             href={link.href}
+                            onClick={(e) => handleNavClick(e, link.href)}
                             style={{
                                 color: 'var(--text-secondary)',
                                 textDecoration: 'none',
                                 fontSize: '0.9rem',
-                                transition: 'color 0.3s ease'
+                                transition: 'color 0.3s ease',
+                                cursor: 'pointer'
                             }}
                             onMouseEnter={(e) => e.target.style.color = 'var(--accent-cyan)'}
                             onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}
@@ -62,6 +82,25 @@ const Navbar = () => {
                             {link.name}
                         </a>
                     ))}
+
+                    <Link
+                        to="/ai-hub"
+                        style={{
+                            color: 'var(--text-primary)',
+                            textDecoration: 'none',
+                            fontSize: '0.9rem',
+                            fontWeight: 'bold',
+                            padding: '0.5rem 1rem',
+                            borderRadius: '8px',
+                            background: 'linear-gradient(45deg, #3b82f6, #8b5cf6)',
+                            transition: 'opacity 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => e.target.style.opacity = '0.9'}
+                        onMouseLeave={(e) => e.target.style.opacity = '1'}
+                    >
+                        AI Hub ✨
+                    </Link>
+
                     <div style={{ width: '1px', height: '20px', background: 'rgba(255,255,255,0.1)' }}></div>
                     <div style={{ display: 'flex', gap: '1rem' }}>
                         <a href="https://github.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', fontSize: '1.2rem' }}>
@@ -79,8 +118,44 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Mobile Menu (Simple implementation for now, can be enhanced) */}
-            {/* Note: In a real implementation, I would add media queries in CSS to hide/show desktop/mobile menus */}
+            {/* Mobile Menu */}
+            {isOpen && (
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    style={{
+                        position: 'absolute',
+                        top: '100%',
+                        left: 0,
+                        right: 0,
+                        background: 'rgba(5, 5, 5, 0.95)',
+                        backdropFilter: 'blur(10px)',
+                        padding: '2rem',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '1.5rem',
+                        borderBottom: '1px solid rgba(255,255,255,0.1)'
+                    }}
+                >
+                    {navLinks.map((link) => (
+                        <a
+                            key={link.name}
+                            href={link.href}
+                            onClick={(e) => handleNavClick(e, link.href)}
+                            style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.1rem' }}
+                        >
+                            {link.name}
+                        </a>
+                    ))}
+                    <Link
+                        to="/ai-hub"
+                        onClick={() => setIsOpen(false)}
+                        style={{ color: '#3b82f6', textDecoration: 'none', fontSize: '1.1rem', fontWeight: 'bold' }}
+                    >
+                        AI Hub ✨
+                    </Link>
+                </motion.div>
+            )}
         </motion.nav>
     );
 };
