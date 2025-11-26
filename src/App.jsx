@@ -7,7 +7,7 @@ import About from './components/About'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
-import CustomCursor from './components/CustomCursor'
+
 import AIHub from './components/AIHub'
 
 const Portfolio = () => (
@@ -39,7 +39,7 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <CustomCursor />
+
         <Navbar />
         <Routes>
           <Route path="/" element={<Portfolio />} />
