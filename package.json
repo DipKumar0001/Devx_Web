@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "auto-push": "node auto-push.js"
+    "auto-push": "node auto-push.cjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.0",

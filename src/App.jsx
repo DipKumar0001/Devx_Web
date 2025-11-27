@@ -7,7 +7,7 @@ import Hero from './components/Hero'
 import JavaFundamentals from './components/JavaFundamentals'
 import OOPConcepts from './components/OOPConcepts'
 import ProblemsSolutions from './components/ProblemsSolutions'
-import CustomCursor from './components/CustomCursor'
+
 
 const JavaLearningSite = () => (
   <main>
@@ -42,7 +42,6 @@ function App() {
     <Router>
       <div className="app">
         <ScrollProgress />
-        <CustomCursor />
         <Navbar />
         <Routes>
           <Route path="/" element={<JavaLearningSite />} />

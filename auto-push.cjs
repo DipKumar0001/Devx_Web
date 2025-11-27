@@ -13,8 +13,12 @@ const DEBOUNCE_DELAY = 3000; // 3 seconds
 const watchPaths = [
     'src/**/*',
     'public/**/*',
-    'index.html',
-    'package.json',
+    '*.html',
+    '*.md',
+    '*.json',
+    '*.js',
+    '*.jsx',
+    '*.css',
     'vite.config.js'
 ];
 
