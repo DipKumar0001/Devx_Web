@@ -1,0 +1,98 @@
+.interactive-card {
+    margin: 1.5rem 0;
+    transition: all var(--transition-medium);
+}
+
+.interactive-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+    user-select: none;
+    gap: 1rem;
+}
+
+.interactive-card-header-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    flex: 1;
+}
+
+.interactive-card-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.interactive-card-title-section {
+    flex: 1;
+}
+
+.interactive-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.interactive-card-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.interactive-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.interactive-card-toggle {
+    color: var(--primary-green);
+    font-size: 1.25rem;
+    transition: transform var(--transition-medium);
+}
+
+.interactive-card.expanded .interactive-card-toggle {
+    transform: rotate(180deg);
+}
+
+.interactive-card-content {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(52, 211, 153, 0.2);
+    animation: fadeIn 0.4s ease-out;
+}
+
+.interactive-card-full-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+/* Hover effects */
+.interactive-card:hover {
+    border-color: var(--primary-green);
+}
+
+.interactive-card:hover .interactive-card-title {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

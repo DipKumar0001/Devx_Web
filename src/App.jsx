@@ -1,28 +1,30 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Lenis from 'lenis'
 import Navbar from './components/Navbar'
+import ScrollProgress from './components/ScrollProgress'
 import Hero from './components/Hero'
-import About from './components/About'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
+import JavaFundamentals from './components/JavaFundamentals'
+import OOPConcepts from './components/OOPConcepts'
+import ProblemsSolutions from './components/ProblemsSolutions'
+import CustomCursor from './components/CustomCursor'
 
-
-
-const Portfolio = () => (
+const JavaLearningSite = () => (
   <main>
     <Hero />
-    <About />
-    <Skills />
-    <Projects />
-    <Contact />
+    <JavaFundamentals />
+    <OOPConcepts />
+    <ProblemsSolutions />
   </main>
 )
 
 function App() {
   useEffect(() => {
-    const lenis = new Lenis()
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+    })
 
     function raf(time) {
       lenis.raf(time)
@@ -39,11 +41,11 @@ function App() {
   return (
     <Router>
       <div className="app">
-
+        <ScrollProgress />
+        <CustomCursor />
         <Navbar />
         <Routes>
-          <Route path="/" element={<Portfolio />} />
-
+          <Route path="/" element={<JavaLearningSite />} />
         </Routes>
       </div>
     </Router>

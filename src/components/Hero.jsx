@@ -1,131 +1,178 @@
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import './Hero.css';
 
 const Hero = () => {
+    const [displayedText, setDisplayedText] = useState('');
+    const fullText = 'Java Learning Hub';
+
+    useEffect(() => {
+        let index = 0;
+        const timer = setInterval(() => {
+            if (index <= fullText.length) {
+                setDisplayedText(fullText.substring(0, index));
+                index++;
+            } else {
+                clearInterval(timer);
+            }
+        }, 100);
+
+        return () => clearInterval(timer);
+    }, []);
+
     return (
-        <section id="hero" className="section" style={{ overflow: 'hidden', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            {/* Animated Background */}
-            <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                zIndex: -1,
-                background: 'radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%)',
-            }}>
+        <section id="hero" className="section hero-section">
+            {/* Animated Background with Green/Red particles */}
+            <div className="hero-background">
                 <motion.div
+                    className="particle-blob green-blob"
                     animate={{
-                        scale: [1, 1.2, 1],
-                        rotate: [0, 90, 0],
-                        opacity: [0.3, 0.5, 0.3],
+                        scale: [1, 1.3, 1],
+                        rotate: [0, 180, 360],
+                        opacity: [0.2, 0.4, 0.2],
                     }}
                     transition={{
-                        duration: 10,
+                        duration: 12,
                         repeat: Infinity,
                         ease: "easeInOut"
                     }}
-                    style={{
-                        position: 'absolute',
-                        top: '-20%',
-                        left: '-10%',
-                        width: '600px',
-                        height: '600px',
-                        background: 'radial-gradient(circle, var(--accent-purple) 0%, transparent 70%)',
-                        filter: 'blur(80px)',
-                        borderRadius: '50%',
-                    }}
                 />
                 <motion.div
+                    className="particle-blob red-blob"
                     animate={{
-                        scale: [1, 1.5, 1],
-                        x: [0, 100, 0],
-                        opacity: [0.2, 0.4, 0.2],
+                        scale: [1, 1.4, 1],
+                        x: [0, -100, 100, 0],
+                        opacity: [0.15, 0.35, 0.15],
                     }}
                     transition={{
                         duration: 15,
                         repeat: Infinity,
                         ease: "easeInOut"
                     }}
-                    style={{
-                        position: 'absolute',
-                        bottom: '-10%',
-                        right: '-10%',
-                        width: '500px',
-                        height: '500px',
-                        background: 'radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%)',
-                        filter: 'blur(80px)',
-                        borderRadius: '50%',
+                />
+                <motion.div
+                    className="particle-blob green-blob-2"
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        y: [0, 50, -50, 0],
+                        opacity: [0.1, 0.3, 0.1],
+                    }}
+                    transition={{
+                        duration: 18,
+                        repeat: Infinity,
+                        ease: "easeInOut"
                     }}
                 />
+
+                {/* Floating code symbols */}
+                <div className="code-symbols">
+                    {['{', '}', '<', '>', '/', ';', '(', ')'].map((symbol, i) => (
+                        <motion.span
+                            key={i}
+                            className="code-symbol"
+                            initial={{ opacity: 0 }}
+                            animate={{
+                                opacity: [0.1, 0.3, 0.1],
+                                y: [0, -30, 0],
+                                x: [0, Math.random() * 20 - 10, 0],
+                            }}
+                            transition={{
+                                duration: 4 + Math.random() * 3,
+                                repeat: Infinity,
+                                delay: i * 0.3,
+                            }}
+                            style={{
+                                left: `${10 + i * 12}%`,
+                                top: `${20 + (i % 3) * 20}%`,
+                            }}
+                        >
+                            {symbol}
+                        </motion.span>
+                    ))}
+                </div>
             </div>
 
-            <div className="container" style={{ textAlign: 'center', zIndex: 1 }}>
-                <motion.h2
+            <div className="container hero-content">
+                <motion.div
+                    className="hero-badge"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    style={{ fontSize: '1.5rem', color: 'var(--accent-cyan)', marginBottom: '1rem', letterSpacing: '2px', textTransform: 'uppercase' }}
                 >
-                    Hello, I am
-                </motion.h2>
+                    <span className="badge badge-green">📚 Interactive Learning</span>
+                </motion.div>
 
                 <motion.h1
+                    className="hero-title"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', fontWeight: '800', lineHeight: 1.1, marginBottom: '1rem' }}
                 >
-                    <span className="gradient-text">Dipesh</span>
+                    {displayedText}
+                    <span className="cursor-blink">|</span>
                 </motion.h1>
 
-                <motion.h3
+                <motion.h2
+                    className="hero-subtitle"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
-                    style={{ fontSize: 'clamp(1.5rem, 4vw, 3rem)', color: 'var(--text-secondary)', marginBottom: '2rem' }}
                 >
-                    Building Digital Experiences.
-                </motion.h3>
+                    My Personal <span className="gradient-text">Knowledge Base</span> for Future Reference
+                </motion.h2>
 
                 <motion.p
+                    className="hero-description"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 }}
-                    style={{ maxWidth: '600px', margin: '0 auto 3rem', color: '#888', fontSize: '1.1rem' }}
                 >
-                    I'm a Computer Science student passionate about creating state-of-the-art web applications with stunning interfaces and advanced functionality.
+                    Master Java programming through interactive tutorials, comprehensive OOP concepts,
+                    advanced topics, and real-world problem solutions. Built as a living document for
+                    academic excellence and technical growth.
                 </motion.p>
 
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    className="hero-cta"
+                    initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1 }}
-                    style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}
                 >
-                    <a href="#projects" style={{
-                        padding: '1rem 2.5rem',
-                        background: 'var(--accent-cyan)',
-                        color: '#000',
-                        borderRadius: '50px',
-                        textDecoration: 'none',
-                        fontWeight: 'bold',
-                        fontSize: '1.1rem',
-                        boxShadow: '0 0 20px rgba(0, 242, 255, 0.4)'
-                    }}>
-                        View Work
+                    <a href="#fundamentals" className="btn btn-primary">
+                        🚀 Start Learning
                     </a>
-                    <a href="#contact" style={{
-                        padding: '1rem 2.5rem',
-                        background: 'transparent',
-                        color: 'var(--text-primary)',
-                        border: '1px solid var(--text-secondary)',
-                        borderRadius: '50px',
-                        textDecoration: 'none',
-                        fontWeight: 'bold',
-                        fontSize: '1.1rem',
-                    }}>
-                        Contact Me
+                    <a href="#problems" className="btn btn-secondary">
+                        💡 Browse Problems
                     </a>
+                </motion.div>
+
+                <motion.div
+                    className="hero-stats"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2 }}
+                >
+                    <div className="stat-item">
+                        <span className="stat-number gradient-text">50+</span>
+                        <span className="stat-label">Topics Covered</span>
+                    </div>
+                    <div className="stat-item">
+                        <span className="stat-number gradient-text-red">100+</span>
+                        <span className="stat-label">Code Examples</span>
+                    </div>
+                    <div className="stat-item">
+                        <span className="stat-number gradient-text">∞</span>
+                        <span className="stat-label">Learning Journey</span>
+                    </div>
+                </motion.div>
+
+                <motion.div
+                    className="scroll-indicator"
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                >
+                    <span>Scroll to explore</span>
+                    <span className="scroll-arrow">↓</span>
                 </motion.div>
             </div>
         </section>

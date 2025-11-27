@@ -1,0 +1,111 @@
+.problems-section {
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+}
+
+.category-filter {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.category-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-medium);
+}
+
+.category-btn:hover {
+    border-color: var(--primary-red);
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.category-btn.active {
+    background: var(--gradient-accent);
+    border-color: var(--primary-red);
+    color: white;
+    box-shadow: var(--shadow-glow-red);
+}
+
+.category-icon {
+    font-size: 1.2rem;
+}
+
+.problems-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.problem-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.problem-section {
+    padding: 1rem;
+    background: rgba(16, 185, 129, 0.03);
+    border-radius: var(--radius-md);
+}
+
+.problem-section h4 {
+    color: var(--primary-green);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.problem-text {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+.complexity-info {
+    padding: 1rem;
+    background: rgba(239, 68, 68, 0.05);
+    border-left: 3px solid var(--primary-red);
+    border-radius: var(--radius-sm);
+}
+
+.complexity-info h4 {
+    color: var(--primary-red);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.complexity-info p {
+    color: var(--text-secondary);
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+}
+
+.no-problems {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .category-filter {
+        gap: 0.75rem;
+    }
+
+    .category-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+}

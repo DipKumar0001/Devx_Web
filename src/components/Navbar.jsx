@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaBars, FaTimes, FaJava } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import './Navbar.css';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -18,10 +19,11 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'About', href: '#about' },
-        { name: 'Skills', href: '#skills' },
-        { name: 'Projects', href: '#projects' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'Home', href: '#hero', icon: '🏠' },
+        { name: 'Fundamentals', href: '#fundamentals', icon: '📖' },
+        { name: 'OOP', href: '#oop', icon: '🎯' },
+        { name: 'Advanced', href: '#advanced', icon: '🚀' },
+        { name: 'Problems', href: '#problems', icon: '💡' },
     ];
 
     const handleNavClick = (e, href) => {
@@ -44,121 +46,77 @@ const Navbar = () => {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5 }}
-            style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                zIndex: 1000,
-                padding: scrolled ? '1rem 2rem' : '2rem',
-                background: scrolled ? 'rgba(5, 5, 5, 0.8)' : 'transparent',
-                backdropFilter: scrolled ? 'blur(10px)' : 'none',
-                borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none',
-                transition: 'all 0.3s ease'
-            }}
+            className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}
         >
-            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Link to="/" style={{ fontSize: '1.5rem', fontWeight: 'bold', textDecoration: 'none', color: 'var(--text-primary)' }}>
-                    Dev<span style={{ color: 'var(--accent-cyan)' }}>Portfolio</span>
+            <div className="navbar-container">
+                <Link to="/" className="navbar-logo">
+                    <FaJava className="logo-icon" />
+                    <span>Java<span className="gradient-text">Hub</span></span>
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="desktop-menu" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+                <div className="desktop-menu">
                     {navLinks.map((link) => (
                         <a
                             key={link.name}
                             href={link.href}
                             onClick={(e) => handleNavClick(e, link.href)}
-                            style={{
-                                color: 'var(--text-secondary)',
-                                textDecoration: 'none',
-                                fontSize: '0.9rem',
-                                transition: 'color 0.3s ease',
-                                cursor: 'pointer'
-                            }}
-                            onMouseEnter={(e) => e.target.style.color = 'var(--accent-cyan)'}
-                            onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}
+                            className="nav-link"
                         >
+                            <span className="nav-icon">{link.icon}</span>
                             {link.name}
                         </a>
                     ))}
 
-                    <a
-                        href="/java-guide/index.html"
-                        style={{
-                            color: 'var(--text-primary)',
-                            textDecoration: 'none',
-                            fontSize: '0.9rem',
-                            fontWeight: 'bold',
-                            padding: '0.5rem 1rem',
-                            borderRadius: '8px',
-                            background: 'linear-gradient(45deg, #f59e0b, #ea580c)',
-                            transition: 'opacity 0.3s ease'
-                        }}
-                        onMouseEnter={(e) => e.target.style.opacity = '0.9'}
-                        onMouseLeave={(e) => e.target.style.opacity = '1'}
-                    >
-                        Java Guide ☕
-                    </a>
+                    <div className="navbar-divider"></div>
 
-
-
-
-                    <div style={{ display: 'flex', gap: '1rem' }}>
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', fontSize: '1.2rem' }}>
+                    <div className="social-links">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-link">
                             <FaGithub />
                         </a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', fontSize: '1.2rem' }}>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">
                             <FaLinkedin />
                         </a>
                     </div>
                 </div>
 
                 {/* Mobile Toggle */}
-                <div className="mobile-toggle" style={{ display: 'none', fontSize: '1.5rem', cursor: 'pointer' }} onClick={() => setIsOpen(!isOpen)}>
+                <div className="mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
                     {isOpen ? <FaTimes /> : <FaBars />}
                 </div>
             </div>
 
             {/* Mobile Menu */}
-            {isOpen && (
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    style={{
-                        position: 'absolute',
-                        top: '100%',
-                        left: 0,
-                        right: 0,
-                        background: 'rgba(5, 5, 5, 0.95)',
-                        backdropFilter: 'blur(10px)',
-                        padding: '2rem',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '1.5rem',
-                        borderBottom: '1px solid rgba(255,255,255,0.1)'
-                    }}
-                >
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            onClick={(e) => handleNavClick(e, link.href)}
-                            style={{ color: 'var(--text-primary)', textDecoration: 'none', fontSize: '1.1rem' }}
-                        >
-                            {link.name}
-                        </a>
-                    ))}
-                    <a
-                        href="/java-guide/index.html"
-                        onClick={() => setIsOpen(false)}
-                        style={{ color: '#f59e0b', textDecoration: 'none', fontSize: '1.1rem', fontWeight: 'bold' }}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="mobile-menu"
                     >
-                        Java Guide ☕
-                    </a>
-
-                </motion.div>
-            )}
+                        {navLinks.map((link) => (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                onClick={(e) => handleNavClick(e, link.href)}
+                                className="mobile-nav-link"
+                            >
+                                <span className="nav-icon">{link.icon}</span>
+                                {link.name}
+                            </a>
+                        ))}
+                        <div className="mobile-social">
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-link">
+                                <FaGithub /> GitHub
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">
+                                <FaLinkedin /> LinkedIn
+                            </a>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.nav>
     );
 };

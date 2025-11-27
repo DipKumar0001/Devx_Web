@@ -34,15 +34,15 @@ const CustomCursor = () => {
             height: 32,
             width: 32,
             backgroundColor: 'transparent',
-            border: '2px solid var(--accent-cyan)',
+            border: '2px solid var(--primary-green)',
         },
         hover: {
             x: mousePosition.x - 24,
             y: mousePosition.y - 24,
             height: 48,
             width: 48,
-            backgroundColor: 'rgba(0, 242, 255, 0.1)',
-            border: '2px solid var(--accent-magenta)',
+            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            border: '2px solid var(--primary-red)',
         }
     };
 
@@ -87,7 +87,7 @@ const CustomCursor = () => {
                     left: 0,
                     width: 8,
                     height: 8,
-                    backgroundColor: 'var(--accent-cyan)',
+                    backgroundColor: 'var(--primary-green)',
                     borderRadius: '50%',
                     pointerEvents: 'none',
                     zIndex: 9999,
